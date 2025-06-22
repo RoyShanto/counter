@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Counter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+</head>
+<body class="bg-gray-100 min-h-screen p-4">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-5xl font-extrabold text-center text-white mb-6 p-3 rounded-lg shadow bg-gradient-to-r from-red-200 to-orange-200">Demo Counter</h1>
+        <div id="schedules" class="grid md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+    </div>
+    <script>
+        const investments = [
+        { label: '210121_45SM*', startDate: '2021-01-21', periods: 60, interval: 1 },
+        { label: '280425_10SSh*', startDate: '2025-04-28', periods: 12, interval: 3 },
+        { label: '040525_10SSh*', startDate: '2025-05-04', periods: 12, interval: 3 },
+        { label: '150525_5SSa*',  startDate: '2025-05-15', periods: 12, interval: 3 },
+        { label: '040125_5BSh',  startDate: '2025-01-04', periods: 12, interval: 3 },
+        { label: '040125_5BSh',  startDate: '2025-01-04', periods: 12, interval: 3 },
+        { label: '040125_5BSh',  startDate: '2025-01-04', periods: 12, interval: 3 },
+        { label: '260425_5BSa',  startDate: '2025-04-26', periods: 12, interval: 3 },
+        { label: '260425_5BSa',  startDate: '2025-04-26', periods: 12, interval: 3 },
+        { label: '260425_5BSa',  startDate: '2025-04-26', periods: 12, interval: 3 },
+        { label: '260425_5BSa',  startDate: '2025-04-26', periods: 12, interval: 3 }
+    ];
+    
+    const today = new Date();
+    const schedulesDiv = document.getElementById('schedules');
+
+    investments.forEach(inv => {
+      const card = document.createElement('div');
+      card.className = "bg-white p-4 rounded-lg shadow hover:shadow-lg transition-shadow";
+
+      const title = document.createElement('h2');
+      title.className = "font-bold text-2xl mb-2 text-center text-blue-700 bg-blue-100 rounded-lg";
+      title.textContent = inv.label;
+      card.appendChild(title);
+
+      // Placeholder for days countdown
+      const countdown = document.createElement('p');
+      countdown.className = "text-center text-sm font-semibold text-blue-700 bg-[#f3f4f6] rounded p-1 mb-2";
+      card.appendChild(countdown);
+
+      const ol = document.createElement('ol');
+      ol.className = "list-decimal list-inside space-y-1 text-sm max-h-80 overflow-y-auto ml-5";
+
+      let currentDate = new Date(inv.startDate);
+      currentDate.setMonth(currentDate.getMonth() + inv.interval);
+
+      let upcomingMarked = false;
+
+      for (let i = 0; i < inv.periods; i++) {
+        const li = document.createElement('li');
+
+        if (!upcomingMarked && currentDate >= today) {
+          li.className = "text-orange-500 font-bold";
+
+          // Calculate days remaining
+          const diffTime = currentDate - today;
+          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+          countdown.textContent = `${diffDays} days left`;
+
+          upcomingMarked = true;
+        }
+
+        li.textContent = currentDate.toDateString();
+        ol.appendChild(li);
+
+        currentDate.setMonth(currentDate.getMonth() + inv.interval);
+      }
+
+      card.appendChild(ol);
+      schedulesDiv.appendChild(card);
+    });
+
+    </script>
+</body>
+</html>
