@@ -9,7 +9,7 @@
 </head>
 <body class="bg-gray-100 min-h-screen p-3">
     <div class="lg:px-10 mx-auto">
-        <h1 class="text-5xl font-extrabold text-center text-white mb-2 p-3 rounded-lg shadow bg-gradient-to-r from-red-200 to-orange-200">Demo Counter</h1>
+        <h1 class="md:text-5xl max-sm:text-4xl font-extrabold text-center text-white mb-2 p-3 rounded-lg shadow bg-gradient-to-r from-red-200 to-orange-200">Demo Counter</h1>
         <p id="today-date" class="text-center text-gray-500"></p>
         <div id="schedules" class="grid lg:grid-cols-6 md:grid-cols-3 max-sm:grid-cols-2 md:gap-4 max-sm:gap-2"></div>
     </div>
@@ -60,10 +60,10 @@
     // Render sorted cards
     investments.forEach(inv => {
         const card = document.createElement('div');
-        card.className = "bg-white md:p-4 max-sm:p-2 rounded-lg shadow hover:shadow-lg transition-shadow";
+        card.className = "bg-white md:p-4 max-sm:p-3 rounded-lg shadow hover:shadow-lg transition-shadow";
 
         const title = document.createElement('h2');
-        title.className = "font-bold text-2xl mb-2 text-center text-blue-700 bg-blue-100 rounded-lg";
+        title.className = "font-bold md:text-2xl max-sm:text-lg mb-2 text-center text-blue-700 bg-blue-100 rounded-lg";
         title.textContent = inv.label;
         card.appendChild(title);
 
