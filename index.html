@@ -1,104 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Counter</title>
     <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 </head>
-<body class="bg-gray-100 min-h-screen p-3">
+
+<body class="bg-gray-100 min-h-screen md:py-3 md:px-10 max-sm:p-3">
     <div class="lg:px-10 mx-auto">
-        <h1 class="md:text-5xl max-sm:text-4xl font-extrabold text-center text-white mb-2 p-3 rounded-lg shadow bg-gradient-to-r from-red-200 to-orange-200">Demo Counter</h1>
+        <h1
+            class="md:text-5xl max-sm:text-4xl font-extrabold text-center text-white mb-2 p-3 rounded-lg shadow bg-gradient-to-r from-red-300 to-orange-200">
+            Demo Counter
+        </h1>
         <p id="today-date" class="text-center text-gray-500"></p>
-        <div id="schedules" class="grid lg:grid-cols-6 md:grid-cols-3 max-sm:grid-cols-2 md:gap-4 max-sm:gap-2"></div>
+
+        <!-- Container for all ps -->
+        <div id="ps-container" class="space-y-8"></div>
     </div>
+    <footer class="text-center py-4">
+        0-10=g-600
+        11-30=g-400
+        31-60=g-200 <br>
+        61-80=r-200
+        81-*=r-400
+    </footer>
+    <hr class="lg:mx-10">
+
     <script>
-    const investments = [
-        { label: '210121_45SM*', startDate: '2021-01-21', periods: 60, interval: 1 },
-        { label: '280425_10SSh*', startDate: '2025-04-28', periods: 12, interval: 3 },
-        { label: '040525_10SSh*', startDate: '2025-05-04', periods: 12, interval: 3 },
-        { label: '210825_10SSh*', startDate: '2025-08-21', periods: 12, interval: 3 },
-        { label: '150525_5SSa*',  startDate: '2025-05-15', periods: 12, interval: 3 },
-        { label: '170825_5SSa*',  startDate: '2025-08-17', periods: 12, interval: 3 },
-        { label: '040125_5BSh',  startDate: '2025-01-04', periods: 12, interval: 3 },
-        { label: '040125_5BSh',  startDate: '2025-01-04', periods: 12, interval: 3 },
-        { label: '040125_5BSh',  startDate: '2025-01-04', periods: 12, interval: 3 },
-        { label: '200825_5BSh',  startDate: '2025-08-20', periods: 12, interval: 3 },
-        { label: '200825_5BSh',  startDate: '2025-08-20', periods: 12, interval: 3 },
-        { label: '200825_5BSh',  startDate: '2025-08-20', periods: 12, interval: 3 },
-        { label: '200825_5BSh',  startDate: '2025-08-20', periods: 12, interval: 3 },
-        { label: '260425_5BSa',  startDate: '2025-04-26', periods: 12, interval: 3 },
-        { label: '260425_5BSa',  startDate: '2025-04-26', periods: 12, interval: 3 },
-        { label: '260425_5BSa',  startDate: '2025-04-26', periods: 12, interval: 3 }
-    ];
+        const investments = [
+            { label: '38?45?880*', p: "U", startDate: '2021-01-21', periods: 60, interval: 1 },
+            { label: '27?10?646*', p: "O", startDate: '2025-04-28', periods: 12, interval: 3 },
+            { label: '27?10?562*', p: "O", startDate: '2025-05-04', periods: 12, interval: 3 },
+            { label: '27?10?562*', p: "O", startDate: '2025-08-21', periods: 12, interval: 3 },
+            { label: '040125_5BSh', p: "O", startDate: '2025-01-04', periods: 12, interval: 3 },
+            { label: '040125_5BSh', p: "O", startDate: '2025-01-04', periods: 12, interval: 3 },
+            { label: '040125_5BSh', p: "O", startDate: '2025-01-04', periods: 12, interval: 3 },
+            { label: '200825_5BSh', p: "O", startDate: '2025-08-20', periods: 12, interval: 3 },
+            { label: '200825_5BSh', p: "O", startDate: '2025-08-20', periods: 12, interval: 3 },
+            { label: '200825_5BSh', p: "O", startDate: '2025-08-20', periods: 12, interval: 3 },
+            { label: '200825_5BSh', p: "O", startDate: '2025-08-20', periods: 12, interval: 3 },
+            { label: '14?5?606*', p: "N", startDate: '2025-05-15', periods: 12, interval: 3 },
+            { label: '13?5?269*', p: "N", startDate: '2025-08-17', periods: 12, interval: 3 },
+            { label: '52?20?965*', p: "N", startDate: '2025-09-29', periods: 12, interval: 3 },
+            { label: '9?5?828', p: "N", startDate: '2025-04-26', periods: 12, interval: 3 },
+            { label: '9?5?828', p: "N", startDate: '2025-04-26', periods: 12, interval: 3 },
+            { label: '9?5?828', p: "N", startDate: '2025-04-26', periods: 12, interval: 3 }];
 
-    const today = new Date();
-    document.getElementById('today-date').innerText = today.toDateString();;
-    const schedulesDiv = document.getElementById('schedules');
+        const today = new Date();
+        document.getElementById('today-date').innerText = today.toDateString();
+        const psContainer = document.getElementById('ps-container');
 
-    // Helper to find next upcoming date and remaining days
-    function getNextDateAndDiff(startDate, periods, interval) {
-        let date = new Date(startDate);
-        date.setMonth(date.getMonth() + interval);
-        for (let i = 0; i < periods; i++) {
-            if (date >= today) {
-                const diffTime = date - today;
-                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                return { nextDate: new Date(date), daysLeft: diffDays };
-            }
+        // Helper to find next upcoming date and remaining days
+        function getNextDateAndDiff(startDate, periods, interval) {
+            let date = new Date(startDate);
             date.setMonth(date.getMonth() + interval);
-        }
-        return { nextDate: null, daysLeft: Infinity };
-    }
-
-    // Add nextDate & daysLeft to each investment
-    investments.forEach(inv => {
-        const result = getNextDateAndDiff(inv.startDate, inv.periods, inv.interval);
-        inv.nextDate = result.nextDate;
-        inv.daysLeft = result.daysLeft;
-    });
-
-    // Sort investments by daysLeft
-    investments.sort((a, b) => a.daysLeft - b.daysLeft);
-
-    // Render sorted cards
-    investments.forEach(inv => {
-        const card = document.createElement('div');
-        card.className = "bg-white md:p-4 max-sm:p-3 rounded-lg shadow hover:shadow-lg transition-shadow";
-
-        const title = document.createElement('h2');
-        title.className = "font-bold md:text-2xl max-sm:text-lg mb-2 text-center text-blue-700 bg-blue-100 rounded-lg";
-        title.textContent = inv.label;
-        card.appendChild(title);
-
-        const countdown = document.createElement('p');
-        countdown.className = "text-center text-sm font-semibold text-blue-700 bg-[#f3f4f6] rounded p-1 mb-2";
-        countdown.textContent = inv.daysLeft !== Infinity ? `${inv.daysLeft} days left` : "All dates passed";
-        card.appendChild(countdown);
-
-        const ol = document.createElement('ol');
-        ol.className = "list-decimal list-inside space-y-1 text-sm lg:max-h-72 md:max-h-40 max-sm:max-h-32 overflow-y-auto md:ml-3 max-sm:ml-1";
-
-        let currentDate = new Date(inv.startDate);
-        currentDate.setMonth(currentDate.getMonth() + inv.interval);
-
-        for (let i = 0; i < inv.periods; i++) {
-            const li = document.createElement('li');
-            li.textContent = currentDate.toDateString();
-
-            if (inv.nextDate && currentDate.getTime() === inv.nextDate.getTime()) {
-                li.className = "text-orange-500 font-bold";
+            for (let i = 0; i < periods; i++) {
+                if (date >= today) {
+                    const diffTime = date - today;
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    return { nextDate: new Date(date), daysLeft: diffDays };
+                }
+                date.setMonth(date.getMonth() + interval);
             }
-
-            ol.appendChild(li);
-            currentDate.setMonth(currentDate.getMonth() + inv.interval);
+            return { nextDate: null, daysLeft: Infinity };
         }
 
-        card.appendChild(ol);
-        schedulesDiv.appendChild(card);
-    });
-</script>
+        // Add nextDate & daysLeft to each investment
+        investments.forEach(inv => {
+            const result = getNextDateAndDiff(inv.startDate, inv.periods, inv.interval);
+            inv.nextDate = result.nextDate;
+            inv.daysLeft = result.daysLeft;
+        });
 
+        // Group by p
+        const grouped = {};
+        investments.forEach(inv => {
+            if (!grouped[inv.p]) grouped[inv.p] = [];
+            grouped[inv.p].push(inv);
+        });
+
+        // Render per p (row-wise)
+        Object.keys(grouped).forEach(p => {
+            const section = document.createElement('div');
+            section.className = "bg-gray-50 rounded-xl md:p-4";
+
+            const header = document.createElement('h2');
+            header.className = "text-2xl font-bold mb-4 text-white bg-blue-500 rounded-lg p-2";
+            const count = grouped[p].length;
+            header.textContent = `${p} (${count})`;
+            section.appendChild(header);
+
+            const row = document.createElement('div');
+            row.className = "flex flex-wrap max-sm:justify-between gap-2";  // row layout
+
+            // Sort p investments by days left
+            grouped[p].sort((a, b) => a.daysLeft - b.daysLeft);
+
+            grouped[p].forEach(inv => {
+                const card = document.createElement('div');
+                card.className = "bg-white border-4 md:p-4 max-sm:p-3 max-sm:w-[190px] rounded-lg shadow hover:shadow-lg transition-shadow";
+
+                // 🎨 Add color based on urgency
+                if (inv.daysLeft <= 10) {
+                    card.classList.add("border-green-600");
+                } else if (inv.daysLeft <= 30) {
+                    card.classList.add("border-green-400");
+                } else if (inv.daysLeft <= 60) {
+                    card.classList.add("border-green-200");
+                } else if (inv.daysLeft <= 80) {
+                    card.classList.add("border-red-200");
+                } else {
+                    card.classList.add("border-red-400");
+                }
+
+                // max-sm:w-40
+                const title = document.createElement('h2');
+                title.className = "font-bold text-lg mb-2 text-center text-blue-700 bg-blue-100 rounded-lg";
+                title.textContent = inv.label;
+                card.appendChild(title);
+
+                const countdown = document.createElement('p');
+                countdown.className = "text-center text-sm font-semibold text-blue-700 bg-[#f3f4f6] rounded p-1 mb-2";
+                countdown.textContent = inv.daysLeft !== Infinity ? `${inv.daysLeft} days left` : "All dates passed";
+                card.appendChild(countdown);
+
+                const ol = document.createElement('ol');
+                ol.className = "list-decimal list-inside space-y-1 text-sm max-h-32 overflow-y-auto";
+
+                let currentDate = new Date(inv.startDate);
+                currentDate.setMonth(currentDate.getMonth() + inv.interval);
+
+                for (let i = 0; i < inv.periods; i++) {
+                    const li = document.createElement('li');
+                    li.textContent = currentDate.toDateString();
+                    if (inv.nextDate && currentDate.getTime() === inv.nextDate.getTime()) {
+                        li.className = "text-orange-500 font-bold";
+                    }
+                    ol.appendChild(li);
+                    currentDate.setMonth(currentDate.getMonth() + inv.interval);
+                }
+
+                card.appendChild(ol);
+                row.appendChild(card);
+            });
+
+            section.appendChild(row);
+            psContainer.appendChild(section);
+        });
+    </script>
 </body>
+
 </html>
