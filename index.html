@@ -10,26 +10,162 @@
 </head>
 
 <body class="bg-gray-100 min-h-screen md:py-3 md:px-10 max-sm:p-3">
-    <div class="lg:px-10 mx-auto">
+    <!-- LOGIN SCREEN -->
+    <div id="iUSection" class="flex flex-col items-center justify-center h-screen w-full">
+        <div class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-sm text-center">
+            <h2 class="text-2xl font-bold text-blue-600 mb-6">🔐 Login</h2>
+
+            <div>
+                <p class="text-2xl">273 + 548 = ?</p>
+                <input id="test" type="text"
+                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 mb-4 text-center text-lg">
+            </div>
+
+            <button onclick="checkLogin()"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-lg font-bold transition">
+                Enter
+            </button>
+            <p id="loginMessage" class="mt-4 text-gray-700 font-semibold"></p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="mainContent" class="lg:px-10 mx-auto hidden">
         <h1
             class="md:text-5xl max-sm:text-4xl font-extrabold text-center text-white mb-2 p-3 rounded-lg shadow bg-gradient-to-r from-red-300 to-orange-200">
             Demo Counter
         </h1>
-        <p id="today-date" class="text-center text-gray-500"></p>
+        <p id="today-date" class="text-3xl top-0 left-2 text-gray-500 fixed"></p>
+        <div class="text-center flex justify-center space-x-3 text-gray-500">
+            <p>0-10=g-600</p>
+            <p>11-30=g-400</p>
+            <p>31-60=g-200</p>
+            <p>61-80=r-200</p>
+            <p>81-*=r-400</p>
+        </div>
 
         <!-- Container for all ps -->
         <div id="ps-container" class="space-y-8"></div>
+
+        <!-- Calculator -->
+        <div class="md:flex justify-center md:space-x-6 py-5 max-sm:space-y-5">
+            <!-- DPS Calculator -->
+            <div class="bg-white shadow-lg rounded-2xl p-6">
+                <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">
+                    DPS Calculator
+                </h2>
+
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <label for="deposit" class="w-full  block font-semibold mb-1">Monthly Deposit (৳)</label>
+                        <input type="number" id="deposit" value="5000"
+                            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                            placeholder="e.g. 1000">
+                    </div>
+
+                    <div class="flex items-center">
+                        <label for="years" class="w-full block font-semibold mb-1">Duration (Years)</label>
+                        <input type="number" id="years" value="5"
+                            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                            placeholder="e.g. 5">
+                    </div>
+
+                    <div class="flex items-center">
+                        <label for="rate" class="w-full block font-semibold mb-1">Annual Interest Rate (%)</label>
+                        <input type="number" id="rate" value="10"
+                            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                            placeholder="e.g. 9">
+                    </div>
+
+                    <div class="flex items-center">
+                        <label for="dpsTax" class="w-full block font-semibold mb-1">Source Tax on Interest (%)</label>
+                        <input type="number" id="dpsTax" value="10"
+                            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                            placeholder="e.g. 10">
+                    </div>
+
+                    <button onclick="calculateDPS()"
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-bold transition">
+                        Calculate
+                    </button>
+                </div>
+
+                <div id="dpsResult" class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200 text-gray-800 hidden">
+                </div>
+            </div>
+
+            <!-- FDR Calculator -->
+            <div class="bg-white shadow-lg rounded-2xl p-6">
+                <h2 class="text-2xl font-bold text-center text-green-600 mb-6">
+                    FDR Calculator
+                </h2>
+
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <label for="fdrAmount" class="w-full block font-semibold mb-1">Principal Amount (৳)</label>
+                        <input type="number" id="fdrAmount" value="500000"
+                            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                            placeholder="e.g. 100000">
+                    </div>
+
+                    <div class="flex items-center">
+                        <label for="fdrYears" class="w-full block font-semibold mb-1">Duration (Months)</label>
+                        <input type="number" id="fdrYears" value="3"
+                            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                            placeholder="e.g. 3">
+                    </div>
+
+                    <div class="flex items-center">
+                        <label for="fdrRate" class="w-full block font-semibold mb-1">Annual Interest Rate (%)</label>
+                        <input type="number" id="fdrRate" value="9.5"
+                            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                            placeholder="e.g. 9.5">
+                    </div>
+
+                    <div class="flex items-center">
+                        <label for="fdrTax" class="w-full block font-semibold mb-1">Source Tax on Interest (%)</label>
+                        <input type="number" id="fdrTax" value="15"
+                            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                            placeholder="e.g. 10">
+                    </div>
+
+                    <button onclick="calculateFDR()"
+                        class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-bold transition">
+                        Calculate
+                    </button>
+                </div>
+
+                <div id="fdrResult" class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200 text-gray-800 hidden">
+                </div>
+            </div>
+        </div>
+
     </div>
-    <footer class="text-center py-4">
-        0-10=g-600
-        11-30=g-400
-        31-60=g-200 <br>
-        61-80=r-200
-        81-*=r-400
-    </footer>
-    <hr class="lg:mx-10">
+
+    <hr class="lg:mx-10 mt-12">
 
     <script>
+        // LOGIN FUNCTION
+        function checkLogin() {
+            const iUTest = document.getElementById('test').value.trim();
+            const iUSection = document.getElementById('iUSection');
+            const mainContent = document.getElementById('mainContent');
+            const msg = document.getElementById('loginMessage');
+
+            if (iUTest.toLowerCase() === 'bible') {
+                iUSection.classList.add('hidden');
+                mainContent.classList.remove('hidden');
+            } else if (iUTest === '821') {
+                msg.textContent = "WoW...! You Are Right.";
+                msg.classList.add("text-green-600");
+                msg.classList.remove("text-red-600");
+            } else {
+                msg.textContent = "Wrong Answer, Try Again...!";
+                msg.classList.add("text-red-600");
+                msg.classList.remove("text-green-600");
+            }
+        }
+
         const investments = [
             { label: '38?45?880*', p: "U", startDate: '2021-01-21', periods: 60, interval: 1 },
             { label: '27?10?646*', p: "O", startDate: '2025-04-28', periods: 12, interval: 3 },
@@ -150,6 +286,76 @@
             section.appendChild(row);
             psContainer.appendChild(section);
         });
+
+
+        // DPS CALCULATION
+        function calculateDPS() {
+            const P = parseFloat(document.getElementById('deposit').value);
+            const t = parseFloat(document.getElementById('years').value);
+            const r = parseFloat(document.getElementById('rate').value) / 100;
+            const taxRate = parseFloat(document.getElementById('dpsTax').value) / 100 || 0;
+            const n = 12;
+            const resultDiv = document.getElementById('dpsResult');
+
+            if (isNaN(P) || isNaN(t) || isNaN(r) || P <= 0 || t <= 0 || r <= 0) {
+                resultDiv.innerHTML = `<p class='text-red-600 font-semibold'>⚠️ Please enter valid positive numbers.</p>`;
+                resultDiv.classList.remove('hidden');
+                return;
+            }
+
+            const M = P * ((Math.pow((1 + r / n), n * t) - 1) / (r / n)) * (1 + r / n);
+            const totalDeposit = P * n * t;
+            const interest = M - totalDeposit;
+
+            const taxAmount = interest * taxRate;
+            const maturityAfterTax = M - taxAmount;
+            const interestAfterTax = M - totalDeposit - taxAmount;
+
+            resultDiv.innerHTML = `
+        <p><strong>Total Deposit:</strong> ৳${totalDeposit.toFixed(2)}</p>
+        <p><strong>Interest Earned:</strong> ৳${interest.toFixed(2)}</p>
+        <p><strong>Maturity Amount:</strong> <span class='text-blue-600 font-bold'>৳${M.toFixed(2)}</span></p>
+        <p><strong>Source Tax:</strong> ৳${taxAmount.toFixed(2)} (${(taxRate * 100).toFixed(1)}%)</p>
+        <p><strong>Maturity After Tax:</strong> <span class='text-blue-600 font-bold'>৳${maturityAfterTax.toFixed(2)}</span></p>
+        <p><strong>Interest After Tax:</strong> <span class='text-blue-600 font-bold'>৳${interestAfterTax.toFixed(2)}</span></p>
+      
+        `;
+            resultDiv.classList.remove('hidden');
+        }
+
+        // FDR CALCULATION
+        function calculateFDR() {
+            const A = parseFloat(document.getElementById('fdrAmount').value);
+            const t = parseFloat(document.getElementById('fdrYears').value);
+            const r = parseFloat(document.getElementById('fdrRate').value) / 100;
+            const taxRate = parseFloat(document.getElementById('fdrTax').value) / 100 || 0;
+            const resultDiv = document.getElementById('fdrResult');
+
+            if (isNaN(A) || isNaN(t) || isNaN(r) || A <= 0 || t <= 0 || r <= 0) {
+                resultDiv.innerHTML = `<p class='text-red-600 font-semibold'>⚠️ Please enter valid positive numbers.</p>`;
+                resultDiv.classList.remove('hidden');
+                return;
+            }
+
+            // Compound interest for FDR (compounded quarterly as per Bangladesh bank practice)
+            const n = 4;
+            const maturity = A * Math.pow(1 + r / n, n * (t / 12));
+            const interest = maturity - A;
+
+            const taxAmount = interest * taxRate;
+            const maturityAfterTax = maturity - taxAmount;
+            const interestAfterTax = maturity - taxAmount - A;
+
+            resultDiv.innerHTML = `
+        <p><strong>Principal:</strong> ৳${A.toFixed(2)}</p>
+        <p><strong>Interest Earned:</strong> ৳${interest.toFixed(2)}</p>
+        <p><strong>Maturity Amount:</strong> <span class='text-green-600 font-bold'>৳${maturity.toFixed(2)}</span></p>
+        <p><strong>Source Tax:</strong> ৳${taxAmount.toFixed(2)} (${(taxRate * 100).toFixed(1)}%)</p>
+        <p><strong>Maturity After Tax:</strong> ৳${maturityAfterTax.toFixed(2)}</p>
+        <p><strong>Interest After Tax:</strong> <span class='text-green-600 font-bold'>৳${interestAfterTax.toFixed(2)}</span></p>
+      `;
+            resultDiv.classList.remove('hidden');
+        }
     </script>
 </body>
 
