@@ -35,7 +35,7 @@
             class="md:text-5xl max-sm:text-4xl font-extrabold text-center text-white mb-2 p-3 rounded-lg shadow bg-gradient-to-r from-red-300 to-orange-200">
             Demo Counter
         </h1>
-        <p id="today-date" class="text-3xl top-0 left-2 text-gray-500 fixed"></p>
+        <p id="today-date" class="text-3xl top-0 right-2 text-gray-500 fixed"></p>
         <div class="text-center flex justify-center space-x-3 text-gray-500">
             <p>0-10=g-600</p>
             <p>11-30=g-400</p>
@@ -49,6 +49,7 @@
 
         <!-- Calculator -->
         <div class="md:flex justify-center md:space-x-6 py-5 max-sm:space-y-5">
+
             <!-- DPS Calculator -->
             <div class="bg-white shadow-lg rounded-2xl p-6">
                 <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">
@@ -140,11 +141,100 @@
             </div>
         </div>
 
+        <!-- General Calculator -->
+        <button id="openCalculator"
+            class="right-2 bottom-1/4 fixed bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 transition">
+            C
+        </button>
+
+        <!-- Calculator Modal -->
+        <div id="calculatorModal"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+            <div class="bg-white p-2 max-sm:top-[22%] rounded-2xl shadow-xl max-sm:w-full relative">
+                <!-- Close Button -->
+                <button id="closeCalculator"
+                    class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 font-bold">✖</button>
+
+                <div class="shadow-xl rounded-2xl p-6 w-full md:w-[300px] bg-white">
+                    <div id="calcDisplay"
+                        class="bg-gray-50 border border-gray-300 text-right text-4xl p-4 rounded-xl mb-6 font-semibold text-black tracking-wide overflow-x-auto">
+                        0
+                    </div>
+
+                    <div class="grid grid-cols-4 gap-3 text-lg font-semibold select-none">
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="C">C</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="DEL">⌫</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="%">%</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="/">÷</button>
+
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="7">7</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="8">8</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="9">9</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="*">×</button>
+
+
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="4">4</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="5">5</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="6">6</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="-">−</button>
+
+
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="1">1</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="2">2</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="3">3</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="+">+</button>
+
+
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl col-span-2"
+                            data-val="0">0</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val=".">.</button>
+                        <button class="calc-btn bg-blue-600 text-white border border-gray-300 py-4 rounded-xl"
+                            data-val="=">=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <hr class="lg:mx-10 mt-12">
 
     <script>
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        // Disable certain keyboard shortcuts
+        document.addEventListener('keydown', function (e) {
+            // Block F12, Ctrl+Shift+I, and Ctrl+U
+            if (e.keyCode === 123 ||
+                (e.ctrlKey && e.shiftKey && e.keyCode === 73) ||
+                (e.ctrlKey && e.keyCode === 85)) {
+                e.preventDefault();
+            }
+        });
+
+
+
         // LOGIN FUNCTION
         function checkLogin() {
             const iUTest = document.getElementById('test').value.trim();
@@ -194,9 +284,14 @@
             let date = new Date(startDate);
             date.setMonth(date.getMonth() + interval);
             for (let i = 0; i < periods; i++) {
-                if (date >= today) {
-                    const diffTime = date - today;
-                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                // Reset time to midnight to avoid time zone issues
+                date.setHours(0, 0, 0, 0);
+                today.setHours(0, 0, 0, 0);
+
+                const diffTime = date - today;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                if (diffDays >= 0) {  // include today as 0
                     return { nextDate: new Date(date), daysLeft: diffDays };
                 }
                 date.setMonth(date.getMonth() + interval);
@@ -204,6 +299,7 @@
             return { nextDate: null, daysLeft: Infinity };
         }
 
+        
         // Add nextDate & daysLeft to each investment
         investments.forEach(inv => {
             const result = getNextDateAndDiff(inv.startDate, inv.periods, inv.interval);
@@ -271,13 +367,22 @@
 
                 for (let i = 0; i < inv.periods; i++) {
                     const li = document.createElement('li');
+
+                    // normalize currentDate to midnight
+                    const normalizedCurrent = new Date(currentDate);
+                    normalizedCurrent.setHours(0, 0, 0, 0);
+
                     li.textContent = currentDate.toDateString();
-                    if (inv.nextDate && currentDate.getTime() === inv.nextDate.getTime()) {
+
+                    // compare normalized dates
+                    if (inv.nextDate && normalizedCurrent.getTime() === inv.nextDate.getTime()) {
                         li.className = "text-orange-500 font-bold";
                     }
+
                     ol.appendChild(li);
                     currentDate.setMonth(currentDate.getMonth() + inv.interval);
                 }
+
 
                 card.appendChild(ol);
                 row.appendChild(card);
@@ -286,6 +391,48 @@
             section.appendChild(row);
             psContainer.appendChild(section);
         });
+
+
+
+
+        // Modal
+        const openBtn = document.getElementById('openCalculator');
+        const closeBtn = document.getElementById('closeCalculator');
+        const modal = document.getElementById('calculatorModal');
+
+        openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
+        closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+
+        // General CALCULATION
+        const display = document.getElementById("calcDisplay");
+        document.querySelectorAll('.calc-btn').forEach(btn => {
+            btn.addEventListener('click', () => handleClick(btn.dataset.val));
+        });
+
+
+        function handleClick(val) {
+            if (val === "C") {
+                display.textContent = "0";
+            } else if (val === "DEL") {
+                display.textContent = display.textContent.slice(0, -1) || "0";
+            } else if (val === "%") {
+                let exp = display.textContent;
+                let match = exp.match(/(\d+\.?\d*)$/);
+                if (match) {
+                    let num = parseFloat(match[1]) / 100;
+                    display.textContent = exp.replace(/(\d+\.?\d*)$/, num);
+                }
+            } else if (val === "=") {
+                try {
+                    display.textContent = eval(display.textContent);
+                } catch {
+                    display.textContent = "Error";
+                }
+            } else {
+                // Fix leading zero: if display is "0", replace it, else append
+                display.textContent = display.textContent === "0" ? val : display.textContent + val;
+            }
+        }
 
 
         // DPS CALCULATION
