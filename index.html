@@ -50,16 +50,16 @@
         <!-- Calculator -->
         <div class="md:flex justify-center md:space-x-6 py-5 max-sm:space-y-5">
 
-            <!-- DPS Calculator -->
+            <!-- DCAL -->
             <div class="bg-white shadow-lg rounded-2xl p-6">
                 <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">
-                    DPS Calculator
+                    DCAL
                 </h2>
 
                 <div class="space-y-4">
                     <div class="flex items-center">
                         <label for="deposit" class="w-full  block font-semibold mb-1">Monthly Deposit (৳)</label>
-                        <input type="number" id="deposit" value="5000"
+                        <input type="text" id="deposit" value="5,000"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                             placeholder="e.g. 1000">
                     </div>
@@ -73,7 +73,7 @@
 
                     <div class="flex items-center">
                         <label for="rate" class="w-full block font-semibold mb-1">Annual Interest Rate (%)</label>
-                        <input type="number" id="rate" value="10"
+                        <input type="number" id="rate" value="9.25"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                             placeholder="e.g. 9">
                     </div>
@@ -95,23 +95,23 @@
                 </div>
             </div>
 
-            <!-- FDR Calculator -->
+            <!-- FCAL -->
             <div class="bg-white shadow-lg rounded-2xl p-6">
                 <h2 class="text-2xl font-bold text-center text-green-600 mb-6">
-                    FDR Calculator
+                    FCAL
                 </h2>
 
                 <div class="space-y-4">
                     <div class="flex items-center">
                         <label for="fdrAmount" class="w-full block font-semibold mb-1">Principal Amount (৳)</label>
-                        <input type="number" id="fdrAmount" value="500000"
+                        <input type="text" id="fdrAmount" value="500,000"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
                             placeholder="e.g. 100000">
                     </div>
 
                     <div class="flex items-center">
                         <label for="fdrYears" class="w-full block font-semibold mb-1">Duration (Months)</label>
-                        <input type="number" id="fdrYears" value="3"
+                        <input type="number" id="fdrYears" value="1"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
                             placeholder="e.g. 3">
                     </div>
@@ -125,7 +125,7 @@
 
                     <div class="flex items-center">
                         <label for="fdrTax" class="w-full block font-semibold mb-1">Source Tax on Interest (%)</label>
-                        <input type="number" id="fdrTax" value="15"
+                        <input type="number" id="fdrTax" value="10"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
                             placeholder="e.g. 10">
                     </div>
@@ -261,20 +261,22 @@
             { label: '27?10?646*', p: "O", startDate: '2025-04-28', periods: 12, interval: 3 },
             { label: '27?10?562*', p: "O", startDate: '2025-05-04', periods: 12, interval: 3 },
             { label: '26?10?482*', p: "O", startDate: '2025-08-21', periods: 12, interval: 3 },
-            { label: '9?5?828', p: "O", startDate: '2025-01-04', periods: 12, interval: 3 },
-            { label: '9?5?828', p: "O", startDate: '2025-01-04', periods: 12, interval: 3 },
-            { label: '9?5?828', p: "O", startDate: '2025-01-04', periods: 12, interval: 3 },
-            { label: '191125_5BSh', p: "O", startDate: '2025-11-30', periods: 6, interval: 1 },
-            { label: '191125_5BSh', p: "O", startDate: '2025-11-30', periods: 6, interval: 1 },
-            { label: '191125_5BSh', p: "O", startDate: '2025-11-30', periods: 6, interval: 1 },
-            { label: '191125_5BSh', p: "O", startDate: '2025-11-30', periods: 6, interval: 1 },
+            { label: '10?5?406', p: "O", startDate: '2025-01-04', periods: 12, interval: 3 },
+            { label: '10?5?406', p: "O", startDate: '2025-01-04', periods: 12, interval: 3 },
+            { label: '10?5?406', p: "O", startDate: '2025-01-04', periods: 12, interval: 3 },
+            { label: '191125?5?0526', p: "O", startDate: '2025-11-30', periods: 6, interval: 1 },
+            { label: '191125?5?0526', p: "O", startDate: '2025-11-30', periods: 6, interval: 1 },
+            { label: '191125?5?0526', p: "O", startDate: '2025-11-30', periods: 6, interval: 1 },
+            { label: '191125?5?0526', p: "O", startDate: '2025-11-30', periods: 6, interval: 1 },
             { label: '13?5?837*', p: "N", startDate: '2025-05-15', periods: 12, interval: 3 },
             { label: '13?5?269*', p: "N", startDate: '2025-08-17', periods: 12, interval: 3 },
             { label: '52?20?965*', p: "N", startDate: '2025-09-29', periods: 12, interval: 3 },
-            { label: '9?5?828', p: "N", startDate: '2025-04-26', periods: 12, interval: 3 },
-            { label: '9?5?828', p: "N", startDate: '2025-04-26', periods: 12, interval: 3 },
-            { label: '9?5?828', p: "N", startDate: '2025-04-26', periods: 12, interval: 3 },
-            { label: '5?2.5?203', p: "N", startDate: '2025-12-07', periods: 1, interval: 3 }];
+
+            { label: '270126?5?0127', p: "N", startDate: '2025-04-30', periods: 12, interval: 1 },
+            { label: '270126?5?0127', p: "N", startDate: '2025-04-30', periods: 12, interval: 1 },
+            { label: '270126?5?0127', p: "N", startDate: '2025-04-30', periods: 12, interval: 1 },
+            { label: '5?2.5?203', p: "N", startDate: '2025-12-07', periods: 3, interval: 3 },
+            { label: '280126?2.5?0127', p: "N", startDate: '2026-01-30', periods: 12, interval: 1 }];
 
         const today = new Date();
         document.getElementById('today-date').innerText = today.toDateString();
@@ -300,7 +302,7 @@
             return { nextDate: null, daysLeft: Infinity };
         }
 
-        
+
         // Add nextDate & daysLeft to each investment
         investments.forEach(inv => {
             const result = getNextDateAndDiff(inv.startDate, inv.periods, inv.interval);
@@ -394,23 +396,39 @@
         });
 
 
+        // Format number with commas (Bangladesh/International style)
+        function formatNumber(value) {
+            return new Intl.NumberFormat('en-BD').format(value);
+        }
+        // Remove commas before calculation
+        function unformatNumber(value) {
+            return value.replace(/,/g, '');
+        }
+        // Enable comma formatting while typing
+        function enableCommaFormat(inputElement) {
+            inputElement.addEventListener('input', function (e) {
+                let value = unformatNumber(e.target.value);
+                if (!isNaN(value) && value !== "") {
+                    e.target.value = formatNumber(value);
+                }
+            });
+        }
+        // Apply formatting to inputs
+        enableCommaFormat(document.getElementById('fdrAmount'));
+        enableCommaFormat(document.getElementById('deposit'));
 
 
         // Modal
         const openBtn = document.getElementById('openCalculator');
         const closeBtn = document.getElementById('closeCalculator');
         const modal = document.getElementById('calculatorModal');
-
         openBtn.addEventListener('click', () => modal.classList.remove('hidden'));
         closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
-
         // General CALCULATION
         const display = document.getElementById("calcDisplay");
         document.querySelectorAll('.calc-btn').forEach(btn => {
             btn.addEventListener('click', () => handleClick(btn.dataset.val));
         });
-
-
         function handleClick(val) {
             if (val === "C") {
                 display.textContent = "0";
@@ -436,9 +454,9 @@
         }
 
 
-        // DPS CALCULATION
+        // DCAL
         function calculateDPS() {
-            const P = parseFloat(document.getElementById('deposit').value);
+            const P = parseFloat(unformatNumber(document.getElementById('deposit').value));
             const t = parseFloat(document.getElementById('years').value);
             const r = parseFloat(document.getElementById('rate').value) / 100;
             const taxRate = parseFloat(document.getElementById('dpsTax').value) / 100 || 0;
@@ -460,20 +478,19 @@
             const interestAfterTax = M - totalDeposit - taxAmount;
 
             resultDiv.innerHTML = `
-        <p><strong>Total Deposit:</strong> ৳${totalDeposit.toFixed(2)}</p>
-        <p><strong>Interest Earned:</strong> ৳${interest.toFixed(2)}</p>
-        <p><strong>Maturity Amount:</strong> <span class='text-blue-600 font-bold'>৳${M.toFixed(2)}</span></p>
-        <p><strong>Source Tax:</strong> ৳${taxAmount.toFixed(2)} (${(taxRate * 100).toFixed(1)}%)</p>
-        <p><strong>Maturity After Tax:</strong> <span class='text-blue-600 font-bold'>৳${maturityAfterTax.toFixed(2)}</span></p>
-        <p><strong>Interest After Tax:</strong> <span class='text-blue-600 font-bold'>৳${interestAfterTax.toFixed(2)}</span></p>
-      
+        <p><strong>Total Deposit: </strong>${formatNumber(totalDeposit.toFixed(2))}</p>
+        <p><strong>Interest Earned: </strong>${formatNumber(interest.toFixed(2))}</p>
+        <p><strong>Maturity Amount: </strong> <span class='text-blue-600 font-bold'>${formatNumber(M.toFixed(2))}</span></p>
+        <p><strong>Source Tax: </strong>${formatNumber(taxAmount.toFixed(2))} (${(taxRate * 100).toFixed(1)}%)</p>
+        <p><strong>Maturity After Tax: </strong> <span class='text-blue-600 font-bold'>${formatNumber(maturityAfterTax.toFixed(2))}</span></p>
+        <p><strong>Interest After Tax: </strong> <span class='text-blue-600 font-bold'>${formatNumber(interestAfterTax.toFixed(2))}</span></p>
         `;
             resultDiv.classList.remove('hidden');
         }
 
-        // FDR CALCULATION
+        // FCAL
         function calculateFDR() {
-            const A = parseFloat(document.getElementById('fdrAmount').value);
+            const A = parseFloat(unformatNumber(document.getElementById('fdrAmount').value));
             const t = parseFloat(document.getElementById('fdrYears').value);
             const r = parseFloat(document.getElementById('fdrRate').value) / 100;
             const taxRate = parseFloat(document.getElementById('fdrTax').value) / 100 || 0;
@@ -486,21 +503,30 @@
             }
 
             // Compound interest for FDR (compounded quarterly as per Bangladesh bank practice)
-            const n = 4;
-            const maturity = A * Math.pow(1 + r / n, n * (t / 12));
-            const interest = maturity - A;
+            // const n = 4;
+            // const maturity = A * Math.pow(1 + r / n, n * (t / 12));
+            // const interest = maturity - A;
 
-            const taxAmount = interest * taxRate;
-            const maturityAfterTax = maturity - taxAmount;
-            const interestAfterTax = maturity - taxAmount - A;
+            // const totalTax = interest * taxRate;
+            // const maturityAfterTax = maturity - totalTax;
+            // const interestAfterTax = maturity - totalTax - A;
+
+
+
+            // ===== SIMPLE INTEREST MODEL =====
+            const interest = ((A * r) / 12) * t;
+            const maturity = A + interest;
+            const totalTax = interest * taxRate;
+            const maturityAfterTax = maturity - totalTax;
+            const interestAfterTax = interest - totalTax;
 
             resultDiv.innerHTML = `
-        <p><strong>Principal:</strong> ৳${A.toFixed(2)}</p>
-        <p><strong>Interest Earned:</strong> ৳${interest.toFixed(2)}</p>
-        <p><strong>Maturity Amount:</strong> <span class='text-green-600 font-bold'>৳${maturity.toFixed(2)}</span></p>
-        <p><strong>Source Tax:</strong> ৳${taxAmount.toFixed(2)} (${(taxRate * 100).toFixed(1)}%)</p>
-        <p><strong>Maturity After Tax:</strong> ৳${maturityAfterTax.toFixed(2)}</p>
-        <p><strong>Interest After Tax:</strong> <span class='text-green-600 font-bold'>৳${interestAfterTax.toFixed(2)}</span></p>
+        <p><strong>Principal: </strong>${formatNumber(A.toFixed(2))}</p>
+        <p><strong>Interest Earned: </strong>${formatNumber(interest.toFixed(2))}</p>
+        <p><strong>Maturity Amount: </strong> <span class='text-green-600 font-bold'>${formatNumber(maturity.toFixed(2))}</span></p>
+        <p><strong>Source Tax: </strong>${formatNumber(totalTax.toFixed(2))} (${(taxRate * 100).toFixed(1)}%)</p>
+        <p><strong>Maturity After Tax: </strong>${formatNumber(maturityAfterTax.toFixed(2))}</p>
+        <p><strong>Interest After Tax: </strong> <span class='text-green-600 font-bold'>${formatNumber(interestAfterTax.toFixed(2))}</span></p>
       `;
             resultDiv.classList.remove('hidden');
         }
