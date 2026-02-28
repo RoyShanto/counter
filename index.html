@@ -257,58 +257,89 @@
         }
 
         const investments = [
-            { label: '39?45?898*', p: "U", startDate: '2026-02-19', periods: 60, interval: 1 },
-            { label: '31?15?218', p: "U", startDate: '2026-02-04', periods: 1, interval: 3 },
-            { label: '27?10?646*', p: "O", startDate: '2025-04-28', periods: 12, interval: 3 },
-            { label: '27?10?562*', p: "O", startDate: '2025-05-04', periods: 12, interval: 3 },
-            { label: '26?10?482*', p: "O", startDate: '2025-08-21', periods: 12, interval: 3 },
-            { label: '10?5?406', p: "O", startDate: '2025-01-04', periods: 12, interval: 3 },
-            { label: '10?5?406', p: "O", startDate: '2025-01-04', periods: 12, interval: 3 },
-            { label: '10?5?406', p: "O", startDate: '2025-01-04', periods: 12, interval: 3 },
-            { label: '191125?5?0526', p: "O", startDate: '2025-11-30', periods: 5, interval: 1 },
-            { label: '191125?5?0526', p: "O", startDate: '2025-11-30', periods: 5, interval: 1 },
-            { label: '191125?5?0526', p: "O", startDate: '2025-11-30', periods: 5, interval: 1 },
-            { label: '191125?5?0526', p: "O", startDate: '2025-11-30', periods: 5, interval: 1 },
-            { label: '13?5?837*', p: "N", startDate: '2025-05-15', periods: 12, interval: 3 },
-            { label: '13?5?269*', p: "N", startDate: '2025-08-17', periods: 12, interval: 3 },
-            { label: '52?20?965*', p: "N", startDate: '2025-09-29', periods: 12, interval: 3 },
-
-            { label: '270126?5?0127', p: "N", startDate: '2026-01-30', periods: 11, interval: 1 },
-            { label: '270126?5?0127', p: "N", startDate: '2026-01-30', periods: 11, interval: 1 },
-            { label: '270126?5?0127', p: "N", startDate: '2026-01-30', periods: 11, interval: 1 },
-            { label: '5?2.5?203', p: "N", startDate: '2025-12-07', periods: 3, interval: 3 },
-            { label: '280126?2.5?0127', p: "N", startDate: '2026-01-30', periods: 11, interval: 1 }];
+            { label: '39?45?898*', p: "U", startDate: '2026-02-19', closeDate: '2031-02-19', policy: "sameDate", periods: 60, interval: 1 },
+            { label: '31?15?218', p: "U", startDate: '2026-02-04', closeDate: '2026-05-04', policy: "sameDate", periods: 1, interval: 3 },
+            { label: '27?10?646*', p: "O", startDate: '2025-04-28', closeDate: '2028-04-28', policy: "sameDate", periods: 12, interval: 3 },
+            { label: '27?10?562*', p: "O", startDate: '2025-05-04', closeDate: '2028-05-04', policy: "sameDate", periods: 12, interval: 3 },
+            { label: '26?10?482*', p: "O", startDate: '2025-08-21', closeDate: '2028-08-21', policy: "sameDate", periods: 12, interval: 3 },
+            { label: '10?5?406', p: "O", startDate: '2025-01-04', closeDate: '2026-04-04', policy: "sameDate", periods: 5, interval: 3 },
+            { label: '10?5?406', p: "O", startDate: '2025-01-04', closeDate: '2026-04-04', policy: "sameDate", periods: 5, interval: 3 },
+            { label: '10?5?406', p: "O", startDate: '2025-01-04', closeDate: '2026-04-04', policy: "sameDate", periods: 5, interval: 3 },
+            { label: '191125?5?0526', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
+            { label: '191125?5?0526', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
+            { label: '191125?5?0526', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
+            { label: '191125?5?0526', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
+            { label: '13?5?837*', p: "N", startDate: '2025-05-15', closeDate: '2028-05-15', policy: "sameDate", periods: 12, interval: 3 },
+            { label: '13?5?269*', p: "N", startDate: '2025-08-17', closeDate: '2028-08-17', policy: "sameDate", periods: 12, interval: 3 },
+            { label: '52?20?965*', p: "N", startDate: '2025-09-29', closeDate: '2028-09-29', policy: "sameDate", periods: 12, interval: 3 },
+            { label: '270126?5?0127', p: "N", startDate: '2026-01-27', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 },
+            { label: '270126?5?0127', p: "N", startDate: '2026-01-27', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 },
+            { label: '270126?5?0127', p: "N", startDate: '2026-01-27', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 },
+            { label: '5?2.5?203', p: "N", startDate: '2025-12-07', closeDate: '2026-03-07', policy: "sameDate", periods: 3, interval: 3 },
+            { label: '280126?2.5?0127', p: "N", startDate: '2026-01-28', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 }];
 
         const today = new Date();
         document.getElementById('today-date').innerText = today.toDateString();
         const psContainer = document.getElementById('ps-container');
 
         // Helper to find next upcoming date and remaining days
-        function getNextDateAndDiff(startDate, periods, interval) {
-            let date = new Date(startDate);
-            date.setMonth(date.getMonth() + interval);
-            for (let i = 0; i < periods; i++) {
-                // Reset time to midnight to avoid time zone issues
-                date.setHours(0, 0, 0, 0);
-                today.setHours(0, 0, 0, 0);
+        function getNextDateAndDiff(startDate, periods, interval, policy) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
 
-                const diffTime = date - today;
+            const baseDate = new Date(startDate);
+
+            for (let i = 0; i < periods; i++) {
+
+                let nextDate = new Date(baseDate);
+                nextDate.setMonth(nextDate.getMonth() + interval * (i + 1));
+
+                if (policy === "monthEnd") {
+                    // Move to last day of that month
+                    nextDate = new Date(
+                        nextDate.getFullYear(),
+                        nextDate.getMonth() + 1,
+                        0
+                    );
+                }
+                // if policy === "sameDate" → keep same day automatically
+
+                nextDate.setHours(0, 0, 0, 0);
+
+                const diffTime = nextDate - today;
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-                if (diffDays >= 0) {  // include today as 0
-                    return { nextDate: new Date(date), daysLeft: diffDays };
+                if (diffDays >= 0) {
+                    return { nextDate, daysLeft: diffDays };
                 }
-                date.setMonth(date.getMonth() + interval);
             }
+
             return { nextDate: null, daysLeft: Infinity };
         }
 
 
         // Add nextDate & daysLeft to each investment
         investments.forEach(inv => {
-            const result = getNextDateAndDiff(inv.startDate, inv.periods, inv.interval);
+            const result = getNextDateAndDiff(inv.startDate, inv.periods, inv.interval, inv.policy);
             inv.nextDate = result.nextDate;
             inv.daysLeft = result.daysLeft;
+
+            // 🔥 NEW: Calculate rest days
+            if (inv.closeDate) {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                const close = new Date(inv.closeDate);
+                close.setHours(0, 0, 0, 0);
+
+                const diff = Math.ceil((close - today) / (1000 * 60 * 60 * 24));
+                inv.restDays = diff;
+            } else {
+                inv.restDays = null;
+            }
+
+            
+
         });
 
         // Group by p
@@ -338,6 +369,7 @@
             grouped[p].forEach(inv => {
                 const card = document.createElement('div');
                 card.className = "bg-white border-4 md:p-4 max-sm:p-3 max-sm:w-[180px] rounded-lg shadow hover:shadow-lg transition-shadow";
+                card.classList.add("relative", "group");
 
                 // 🎨 Add color based on urgency
                 if (inv.daysLeft <= 10) {
@@ -363,28 +395,57 @@
                 countdown.textContent = inv.daysLeft !== Infinity ? `${inv.daysLeft} days left` : "All dates passed";
                 card.appendChild(countdown);
 
+                if (inv.restDays !== null) {
+                    const tooltip = document.createElement('div');
+
+                    tooltip.className =
+                        "absolute bottom-full left-1/2 -translate-x-1/2 mb-2 " +
+                        "bg-black text-white text-xs px-3 py-1 rounded " +
+                        "opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap";
+
+                    tooltip.textContent =
+                        inv.restDays >= 0
+                            ? `${inv.restDays} days`
+                            : `Closed ${Math.abs(inv.restDays)} days ago`;
+
+                    card.appendChild(tooltip);
+                }
+
+                
+
                 const ol = document.createElement('ol');
                 ol.className = "list-decimal list-inside space-y-1 text-sm max-h-32 overflow-y-auto";
 
-                let currentDate = new Date(inv.startDate);
-                currentDate.setMonth(currentDate.getMonth() + inv.interval);
+                let baseDate = new Date(inv.startDate);
 
                 for (let i = 0; i < inv.periods; i++) {
+
+                    // let currentDate = new Date(baseDate);
+                    let currentDate;
+
+                    if (inv.policy === "monthEnd") {
+                        currentDate = new Date(
+                            baseDate.getFullYear(),
+                            baseDate.getMonth() + i + 1,
+                            0
+                        );
+                    } else {
+                        currentDate = new Date(baseDate);
+                        currentDate.setMonth(currentDate.getMonth() + inv.interval * (i + 1));
+                    }
+
                     const li = document.createElement('li');
 
-                    // normalize currentDate to midnight
                     const normalizedCurrent = new Date(currentDate);
                     normalizedCurrent.setHours(0, 0, 0, 0);
 
                     li.textContent = currentDate.toDateString();
 
-                    // compare normalized dates
                     if (inv.nextDate && normalizedCurrent.getTime() === inv.nextDate.getTime()) {
                         li.className = "text-orange-500 font-bold";
                     }
 
                     ol.appendChild(li);
-                    currentDate.setMonth(currentDate.getMonth() + inv.interval);
                 }
 
 
