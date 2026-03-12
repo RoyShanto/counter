@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo Counter</title>
+    <title>Demo Counter – clean</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <style>
@@ -12,7 +12,6 @@
         .group:hover .group-hover\:opacity-100 {
             opacity: 1;
         }
-
         .calc-btn:active {
             transform: scale(0.95);
         }
@@ -21,7 +20,7 @@
 
 <body class="bg-gray-100 min-h-screen md:py-3 md:px-10 max-sm:p-3">
 
-    <!-- LOGIN SCREEN (exactly same UI) -->
+    <!-- LOGIN SCREEN (exact same UI) -->
     <div id="iUSection" class="flex flex-col items-center justify-center h-screen w-full">
         <div class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-sm text-center">
             <h2 class="text-2xl font-bold text-blue-600 mb-6">🔐 Login</h2>
@@ -45,7 +44,7 @@
             Demo Counter
         </h1>
         <p id="today-date" class="text-3xl top-0 right-2 text-gray-500 fixed"></p>
-        <!-- colour legend (unchanged) -->
+        <!-- colour legend -->
         <p class="text-center flex justify-center space-x-2 max-sm:pb-1 text-gray-500">
             <u>0-10</u><u>11-30</u><u>31-60</u><u>61-80</u><u>81-*</u>
         </p>
@@ -53,11 +52,11 @@
         <!-- dynamic investment cards container -->
         <div id="ps-container" class="space-y-8"></div>
 
-        <!-- calculators side by side (identical layout) -->
+        <!-- calculators side by side -->
         <div class="my-4 grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <!-- DCAL card -->
             <div class="bg-white shadow-lg rounded-2xl p-6">
-                <h2 class="text-2xl font-bold text-center text-blue-600 mb-6"> DCAL </h2>
+                <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">DCAL</h2>
                 <div class="space-y-4">
                     <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
                         <label for="deposit" class="font-semibold">Monthly Deposit</label>
@@ -89,59 +88,53 @@
             </div>
             <!-- FCAL card -->
             <div class="bg-white shadow-lg rounded-2xl p-6">
-                <h2 class="text-2xl font-bold text-center text-green-600 mb-6"> FCAL </h2>
+                <h2 class="text-2xl font-bold text-center text-green-600 mb-6">FCAL</h2>
                 <div class="space-y-4">
                     <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
-                        <label for="fdrAmount" class="font-semibold"> Principal Amount </label>
+                        <label for="fdrAmount" class="font-semibold">Principal Amount</label>
                         <input type="text" inputmode="numeric" pattern="[0-9,]*" id="fdrAmount" value="500,000"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
                     </div>
-
-
                     <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
-                        <label id="durationLabel" for="fdrYears" class="font-semibold"> Duration (Months) </label>
+                        <label id="durationLabel" for="fdrYears" class="font-semibold">Duration (Months)</label>
                         <div class="relative w-full">
                             <input type="number" id="fdrYears" value="1" placeholder="Per month = 30 days"
                                 class="w-full p-2 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
                             <label class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer flex items-center">
                                 <input type="checkbox" id="durationDays" class="sr-only peer">
-                                <div class="w-9 h-5 bg-gray-300 rounded-full peer
-                                    peer-checked:bg-green-600
-                                    after:content-[''] after:absolute after:top-[2px] after:left-[2px]
-                                    after:bg-white after:rounded-full
-                                    after:h-4 after:w-4 after:transition-all
-                                    peer-checked:after:translate-x-4">
+                                <div
+                                    class="w-9 h-5 bg-gray-300 rounded-full peer peer-checked:bg-green-600 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-4">
                                 </div>
                             </label>
                         </div>
                     </div>
                     <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
-                        <label for="fdrRate" class="font-semibold"> Annual Interest Rate (%) </label>
+                        <label for="fdrRate" class="font-semibold">Annual Interest Rate (%)</label>
                         <input type="number" id="fdrRate" value="9.5"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
                     </div>
                     <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
-                        <label for="fdrTax" class="font-semibold"> Source Tax on Interest (%) </label>
+                        <label for="fdrTax" class="font-semibold">Source Tax on Interest (%)</label>
                         <input type="number" id="fdrTax" value="10"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
                     </div>
                     <button onclick="calculateFDR()"
                         class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-bold transition">
-                        Calculate </button>
+                        Calculate
+                    </button>
                 </div>
                 <div id="fdrResult"
-                    class="mt-6 bg-green-50 border border-green-200 p-4 rounded-lg text-gray-800 hidden">
-                </div>
+                    class="mt-6 bg-green-50 border border-green-200 p-4 rounded-lg text-gray-800 hidden"></div>
             </div>
         </div>
 
-        <!-- floating calculator button (exactly same) -->
+        <!-- floating calculator button -->
         <button id="openCalculator"
             class="right-2 bottom-1/4 fixed bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 transition">
             C
         </button>
 
-        <!-- calculator modal (identical structure) -->
+        <!-- calculator modal -->
         <div id="calculatorModal"
             class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
             <div class="bg-white p-2 max-sm:top-[22%] rounded-2xl shadow-xl max-sm:w-full relative">
@@ -150,8 +143,10 @@
                 <div class="shadow-xl rounded-2xl p-6 w-full md:w-[300px] bg-white">
                     <div id="calcDisplay"
                         class="bg-gray-50 border border-gray-300 text-right text-4xl p-4 rounded-xl mb-6 font-semibold text-black tracking-wide overflow-x-auto">
-                        0</div>
+                        0
+                    </div>
                     <div class="grid grid-cols-4 gap-3 text-lg font-semibold select-none">
+                        <!-- row 1 -->
                         <button
                             class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="C">C</button>
@@ -164,7 +159,7 @@
                         <button
                             class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="/">÷</button>
-
+                        <!-- row 2 -->
                         <button
                             class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="7">7</button>
@@ -177,7 +172,7 @@
                         <button
                             class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="*">×</button>
-
+                        <!-- row 3 -->
                         <button
                             class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="4">4</button>
@@ -190,7 +185,7 @@
                         <button
                             class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="-">−</button>
-
+                        <!-- row 4 -->
                         <button
                             class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="1">1</button>
@@ -203,7 +198,7 @@
                         <button
                             class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="+">+</button>
-
+                        <!-- row 5 -->
                         <button
                             class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl col-span-2 active:scale-95 hover:bg-gray-100 transition"
                             data-val="0">0</button>
@@ -221,9 +216,11 @@
 
     <hr class="lg:mx-10 mt-12">
 
-    <script>
+    <script type="module">
+        import { demoData } from "./demoData.js"
+
         (function () {
-            // ---------- disable right‑click & devtools shortcuts (unchanged) ----------
+            // ---------- disable right‑click & devtools shortcuts ----------
             document.addEventListener('contextmenu', (e) => e.preventDefault());
             document.addEventListener('keydown', (e) => {
                 if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && e.keyCode === 73) || (e.ctrlKey && e.keyCode === 85)) {
@@ -233,15 +230,15 @@
 
             // ---------- LOGIN ----------
             window.checkLogin = function () {
-                const iUTest = document.getElementById('test').value.trim();
-                const iUSection = document.getElementById('iUSection');
+                const answer = document.getElementById('test').value.trim();
+                const loginScreen = document.getElementById('iUSection');
                 const mainContent = document.getElementById('mainContent');
                 const msg = document.getElementById('loginMessage');
 
-                if (iUTest.toLowerCase() === 'bible') {
-                    iUSection.classList.add('hidden');
+                if (answer.toLowerCase() === 'bible') {
+                    loginScreen.classList.add('hidden');
                     mainContent.classList.remove('hidden');
-                } else if (iUTest === '821') {
+                } else if (answer === '821') {
                     msg.textContent = "WoW...! You Are Right.";
                     msg.classList.add("text-green-600");
                     msg.classList.remove("text-red-600");
@@ -252,54 +249,36 @@
                 }
             };
 
-            // ---------- DATA ----------
-            const investments = [
-                { label: '39?45?898*', p: "U", startDate: '2026-02-19', closeDate: '2031-02-19', policy: "sameDate", periods: 60, interval: 1 },
-                { label: '30?15?375', p: "U", startDate: '2026-02-04', closeDate: '2026-05-04', policy: "sameDate", periods: 1, interval: 3 },
-                { label: '27?10?646*', p: "O", startDate: '2025-04-28', closeDate: '2028-04-28', policy: "sameDate", periods: 12, interval: 3 },
-                { label: '27?10?562*', p: "O", startDate: '2025-05-04', closeDate: '2028-05-04', policy: "sameDate", periods: 12, interval: 3 },
-                { label: '26?10?482*', p: "O", startDate: '2025-08-21', closeDate: '2028-08-21', policy: "sameDate", periods: 12, interval: 3 },
-                { label: '10?5?406', p: "O", startDate: '2025-01-04', closeDate: '2026-04-04', policy: "sameDate", periods: 5, interval: 3 },
-                { label: '10?5?406', p: "O", startDate: '2025-01-04', closeDate: '2026-04-04', policy: "sameDate", periods: 5, interval: 3 },
-                { label: '10?5?406', p: "O", startDate: '2025-01-04', closeDate: '2026-04-04', policy: "sameDate", periods: 5, interval: 3 },
-                { label: '3?5?562', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
-                { label: '3?5?562', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
-                { label: '3?5?562', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
-                { label: '3?5?562', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
-                { label: '13?5?837*', p: "N", startDate: '2025-05-15', closeDate: '2028-05-15', policy: "sameDate", periods: 12, interval: 3 },
-                { label: '13?5?269*', p: "N", startDate: '2025-08-17', closeDate: '2028-08-17', policy: "sameDate", periods: 12, interval: 3 },
-                { label: '52?20?965*', p: "N", startDate: '2025-09-29', closeDate: '2028-09-29', policy: "sameDate", periods: 12, interval: 3 },
-                { label: '3?5?562', p: "N", startDate: '2026-01-27', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 },
-                { label: '3?5?562', p: "N", startDate: '2026-01-27', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 },
-                { label: '3?5?562', p: "N", startDate: '2026-01-27', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 },
-                { label: '2?3?137', p: "N", startDate: '2026-03-08', closeDate: '2027-03-08', policy: "monthEnd", periods: 12, interval: 1 },
-                { label: '1?2.5?781', p: "N", startDate: '2026-01-28', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 }
-            ];
-
             // ---------- helper: find next date & days left ----------
             function getNextDateAndDiff(startDate, periods, interval, policy) {
-                const today = new Date(); today.setHours(0, 0, 0, 0);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
                 const base = new Date(startDate);
+                base.setHours(0, 0, 0, 0);
                 for (let i = 0; i < periods; i++) {
-                    let next = new Date(base);
-                    next.setMonth(next.getMonth() + interval * (i + 1));
+                    let next;
                     if (policy === "monthEnd") {
-                        next = new Date(next.getFullYear(), next.getMonth() + 1, 0);
+                        // month end starting from start month
+                        next = new Date(base.getFullYear(), base.getMonth() + i + 1, 0);
+                    } else {
+                        next = new Date(base);
+                        next.setMonth(base.getMonth() + interval * (i + 1));
                     }
                     next.setHours(0, 0, 0, 0);
-                    const diff = Math.ceil((next - today) / (1000 * 60 * 60 * 24));
-                    if (diff >= 0) return { nextDate: next, daysLeft: diff };
+                    const diff = Math.ceil((next - today) / 86400000);
+                    if (diff >= 0) {
+                        return { nextDate: next, daysLeft: diff };
+                    }
                 }
                 return { nextDate: null, daysLeft: Infinity };
             }
 
-            // ---------- enrich investments with nextDate, daysLeft, restDays ----------
+            // enrich demoData
             const today = new Date(); today.setHours(0, 0, 0, 0);
-            investments.forEach(inv => {
+            demoData.forEach(inv => {
                 const { nextDate, daysLeft } = getNextDateAndDiff(inv.startDate, inv.periods, inv.interval, inv.policy);
                 inv.nextDate = nextDate;
                 inv.daysLeft = daysLeft;
-
                 if (inv.closeDate) {
                     const close = new Date(inv.closeDate); close.setHours(0, 0, 0, 0);
                     inv.restDays = Math.ceil((close - today) / (1000 * 60 * 60 * 24));
@@ -308,10 +287,10 @@
                 }
             });
 
-            // ---------- render cards, grouped by 'p' (exact same UI logic) ----------
+            // ---------- render cards grouped by 'p' ----------
             const psContainer = document.getElementById('ps-container');
             const grouped = {};
-            investments.forEach(inv => {
+            demoData.forEach(inv => {
                 if (!grouped[inv.p]) grouped[inv.p] = [];
                 grouped[inv.p].push(inv);
             });
@@ -328,14 +307,10 @@
                 const row = document.createElement('div');
                 row.className = "flex flex-wrap max-sm:justify-between gap-2";
 
-                // sort by urgency
-                grouped[p].sort((a, b) => a.daysLeft - b.daysLeft);
-
-                grouped[p].forEach(inv => {
+                grouped[p].sort((a, b) => a.daysLeft - b.daysLeft).forEach(inv => {
                     const card = document.createElement('div');
                     card.className = "bg-white border-4 md:p-4 max-sm:p-3 max-sm:w-[180px] rounded-lg shadow hover:shadow-lg transition-shadow relative group";
 
-                    // colour border by daysLeft
                     if (inv.daysLeft <= 10) card.classList.add("border-green-600");
                     else if (inv.daysLeft <= 30) card.classList.add("border-green-400");
                     else if (inv.daysLeft <= 60) card.classList.add("border-green-200");
@@ -352,7 +327,6 @@
                     countdown.textContent = inv.daysLeft !== Infinity ? `${inv.daysLeft} days left` : "All dates passed";
                     card.appendChild(countdown);
 
-                    // tooltip with restDays (only if exists)
                     if (inv.restDays !== null) {
                         const tooltip = document.createElement('div');
                         tooltip.className = "absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-black text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap";
@@ -360,7 +334,6 @@
                         card.appendChild(tooltip);
                     }
 
-                    // list of all installment dates
                     const ol = document.createElement('ol');
                     ol.className = "list-decimal list-inside space-y-1 text-sm max-h-32 overflow-y-auto";
                     const baseDate = new Date(inv.startDate);
@@ -386,35 +359,29 @@
                 psContainer.appendChild(section);
             });
 
-            // ---------- display today's date ----------
+            // today's date
             document.getElementById('today-date').innerText = new Date().toDateString();
 
-            // ---------- COMMA FORMATTING for amount inputs (unified) ----------
+            // ---------- COMMA FORMATTING for amount inputs ----------
             const formatNumber = (val) => new Intl.NumberFormat('en-BD').format(val);
             const unformatNumber = (str) => str.replace(/,/g, '');
 
             function enableCommaFormat(inputEl) {
                 inputEl.addEventListener("input", function (e) {
                     let cursor = e.target.selectionStart;
-                    // remove non-numbers
                     let raw = e.target.value.replace(/[^\d]/g, "");
                     if (raw === "") {
                         e.target.value = "";
                         return;
                     }
-                    // count commas before formatting
                     let beforeLength = e.target.value.length;
-                    // format
                     let formatted = formatNumber(raw);
                     e.target.value = formatted;
-                    // adjust cursor position
                     let afterLength = formatted.length;
                     cursor = cursor + (afterLength - beforeLength);
                     e.target.setSelectionRange(cursor, cursor);
                 });
             }
-            
-            // apply to both calculator inputs
             enableCommaFormat(document.getElementById('fdrAmount'));
             enableCommaFormat(document.getElementById('deposit'));
 
@@ -422,17 +389,13 @@
             const modal = document.getElementById('calculatorModal');
             document.getElementById('openCalculator').addEventListener('click', () => modal.classList.remove('hidden'));
             document.getElementById('closeCalculator').addEventListener('click', () => modal.classList.add('hidden'));
+
             const display = document.getElementById("calcDisplay");
 
-
             function formatExpression(exp) {
-                return exp.replace(/\d+(\.\d+)?/g, (num) => {
-                    return formatNumber(num);
-                });
+                return exp.replace(/\d+(\.\d+)?/g, (num) => formatNumber(num));
             }
 
-
-            // Create One Input Function
             function handleCalcInput(val) {
                 let current = unformatNumber(display.textContent.trim());
                 if (val === "C") {
@@ -441,11 +404,7 @@
                 }
                 if (val === "DEL") {
                     current = current.slice(0, -1) || "0";
-                    if (current === "0") {
-                        display.textContent = "0";
-                    } else {
-                        display.textContent = formatExpression(current);
-                    }
+                    display.textContent = current === "0" ? "0" : formatExpression(current);
                     return;
                 }
                 if (val === "%") {
@@ -471,126 +430,37 @@
                     display.textContent += val;
                     return;
                 }
-                if (current === "0") {
-                    current = val;
-                } else {
-                    current += val;
-                }
+                // number or decimal
+                current = current === "0" ? val : current + val;
                 display.textContent = formatExpression(current);
             }
 
-
-            // Use It For Mouse Clicks
+            // button clicks
             document.querySelectorAll('.calc-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    handleCalcInput(btn.dataset.val);
-                });
+                btn.addEventListener('click', () => handleCalcInput(btn.dataset.val));
             });
 
-
-            // Add Keyboard Support
+            // keyboard support (only when modal is open)
             document.addEventListener("keydown", (e) => {
-
+                if (modal.classList.contains("hidden")) return;
                 const key = e.key;
-
-                if (!modal.classList.contains("hidden")) {
-
-                    if (!isNaN(key)) handleCalcInput(key);
-
-                    if (["+", "-", "*", "/"].includes(key))
-                        handleCalcInput(key);
-
-                    if (key === "Enter") handleCalcInput("=");
-
-                    if (key === "Backspace") handleCalcInput("DEL");
-
-                    if (key === "Escape") handleCalcInput("C");
-
-                    if (key === ".") handleCalcInput(".");
+                const handledKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '.', 'Enter', 'Backspace', 'Escape'];
+                if (handledKeys.includes(key) || key === '%') {  // % is not a key but we map it via Escape? we handle % separately
+                    e.preventDefault();
                 }
-
+                if (!isNaN(key) || ['+', '-', '*', '/', '.'].includes(key)) handleCalcInput(key);
+                else if (key === 'Enter') handleCalcInput('=');
+                else if (key === 'Backspace') handleCalcInput('DEL');
+                else if (key === 'Escape') handleCalcInput('C');
             });
 
+            // ---------- toggle months/days label ----------
+            document.getElementById("durationDays").addEventListener("change", function toggleDurationLabel() {
+                const label = document.getElementById('durationLabel');
+                label.textContent = this.checked ? "Duration (Days)" : "Duration (Months)";
+            });
 
-
-
-
-
-            // document.querySelectorAll('.calc-btn').forEach(btn => {
-            //     btn.addEventListener('click', () => {
-            //         const val = btn.dataset.val;
-            //         let current = display.textContent.trim();
-            //         if (val === "C") {
-            //             display.textContent = "0";
-            //             return;
-            //         }
-            //         if (val === "DEL") {
-            //             display.textContent = current.slice(0, -1) || "0";
-            //             return;
-            //         }
-            //         if (val === "%") {
-            //             let match = current.match(/(\d+\.?\d*)$/);
-            //             if (match) {
-            //                 let num = parseFloat(match[1]) / 100;
-            //                 display.textContent = current.replace(/(\d+\.?\d*)$/, num);
-            //             }
-            //             return;
-            //         }
-            //         if (val === "=") {
-            //             try {
-            //                 display.textContent = eval(current);
-            //             } catch {
-            //                 display.textContent = "Error";
-            //             }
-            //             return;
-            //         }
-            //         // Operators
-            //         const ops = ["+", "-", "*", "/"];
-            //         if (ops.includes(val)) {
-
-            //             if (ops.includes(current.slice(-1))) return;
-
-            //             display.textContent += val;
-            //             return;
-            //         }
-            //         // Numbers / decimal
-            //         if (current === "0") {
-            //             display.textContent = val;
-            //         } else {
-            //             display.textContent += val;
-            //         }
-            //     });
-            // });
-
-
-            // document.addEventListener("keydown", (e) => {
-            //     const key = e.key;
-            //     if ("0123456789.+-*/".includes(key)) {
-            //         display.textContent =
-            //             display.textContent === "0"
-            //                 ? key
-            //                 : display.textContent + key;
-            //     }
-            //     if (key === "Enter") {
-            //         try {
-            //             display.textContent =
-            //                 Function("return " + display.textContent)();
-            //         } catch {
-            //             display.textContent = "Error";
-            //         }
-            //     }
-            //     if (key === "Backspace") {
-            //         display.textContent =
-            //             display.textContent.slice(0, -1) || "0";
-            //     }
-            //     if (key === "Escape") {
-            //         display.textContent = "0";
-            //     }
-            // });
-
-
-
-            // ---------- DCAL (unchanged calculation, but using unformat) ----------
+            // ---------- DCAL calculation ----------
             window.calculateDPS = function () {
                 const P = parseFloat(unformatNumber(document.getElementById('deposit').value));
                 const t = parseFloat(document.getElementById('years').value);
@@ -613,28 +483,17 @@
                 const interestAfterTax = M - totalDeposit - taxAmount;
 
                 resultDiv.innerHTML = `
-                    <p><strong>Total Deposit: </strong>${formatNumber(totalDeposit.toFixed(2))}</p>
-                    <p><strong>Interest Earned: </strong>${formatNumber(interest.toFixed(2))}</p>
-                    <p><strong>Maturity Amount: </strong> <span class='text-blue-600 font-bold'>${formatNumber(M.toFixed(2))}</span></p>
-                    <p><strong>Source Tax: </strong>${formatNumber(taxAmount.toFixed(2))} (${(taxRate * 100).toFixed(1)}%)</p>
-                    <p><strong>Maturity After Tax: </strong> <span class='text-blue-600 font-bold'>${formatNumber(maturityAfterTax.toFixed(2))}</span></p>
-                    <p><strong>Interest After Tax: </strong> <span class='text-blue-600 font-bold'>${formatNumber(interestAfterTax.toFixed(2))}</span></p>
-                `;
+          <p><strong>Total Deposit: </strong>${formatNumber(totalDeposit.toFixed(2))}</p>
+          <p><strong>Interest Earned: </strong>${formatNumber(interest.toFixed(2))}</p>
+          <p><strong>Maturity Amount: </strong> <span class='text-blue-600 font-bold'>${formatNumber(M.toFixed(2))}</span></p>
+          <p><strong>Source Tax: </strong>${formatNumber(taxAmount.toFixed(2))} (${(taxRate * 100).toFixed(1)}%)</p>
+          <p><strong>Maturity After Tax: </strong> <span class='text-blue-600 font-bold'>${formatNumber(maturityAfterTax.toFixed(2))}</span></p>
+          <p><strong>Interest After Tax: </strong> <span class='text-blue-600 font-bold'>${formatNumber(interestAfterTax.toFixed(2))}</span></p>
+        `;
                 resultDiv.classList.remove('hidden');
             };
 
-
-            document.getElementById("durationDays").addEventListener("change", toggleDurationLabel);
-            function toggleDurationLabel() {
-                const checkbox = document.getElementById('durationDays');
-                const label = document.getElementById('durationLabel');
-                if (checkbox.checked) {
-                    label.textContent = "Duration (Days)";
-                } else {
-                    label.textContent = "Duration (Months)";
-                }
-            }
-            // ---------- FCAL (simple interest version, same as original) ----------
+            // ---------- FCAL calculation ----------
             window.calculateFDR = function () {
                 const A = parseFloat(unformatNumber(document.getElementById('fdrAmount').value));
                 let t = parseFloat(document.getElementById('fdrYears').value);
@@ -648,10 +507,8 @@
                     resultDiv.classList.remove('hidden');
                     return;
                 }
-                // convert days → months if checkbox checked
-                if (isDays) {
-                    t = t / 30;
-                }
+                if (isDays) t = t / 30; // convert days → months (30-day month)
+
                 const interest = ((A * r) / 12) * t;
                 const maturity = A + interest;
                 const totalTax = interest * taxRate;
@@ -659,13 +516,13 @@
                 const interestAfterTax = interest - totalTax;
 
                 resultDiv.innerHTML = `
-                    <p><strong>Principal: </strong>${formatNumber(A.toFixed(2))}</p>
-                    <p><strong>Interest Earned: </strong>${formatNumber(interest.toFixed(2))}</p>
-                    <p><strong>Maturity Amount: </strong> <span class='text-green-600 font-bold'>${formatNumber(maturity.toFixed(2))}</span></p>
-                    <p><strong>Source Tax: </strong>${formatNumber(totalTax.toFixed(2))} (${(taxRate * 100).toFixed(1)}%)</p>
-                    <p><strong>Maturity After Tax: </strong> <span class='text-green-600 font-bold'>${formatNumber(maturityAfterTax.toFixed(2))}</span></p>
-                    <p><strong>Interest After Tax: </strong> <span class='text-green-600 font-bold'>${formatNumber(interestAfterTax.toFixed(2))}</span></p>
-                `;
+          <p><strong>Principal: </strong>${formatNumber(A.toFixed(2))}</p>
+          <p><strong>Interest Earned: </strong>${formatNumber(interest.toFixed(2))}</p>
+          <p><strong>Maturity Amount: </strong> <span class='text-green-600 font-bold'>${formatNumber(maturity.toFixed(2))}</span></p>
+          <p><strong>Source Tax: </strong>${formatNumber(totalTax.toFixed(2))} (${(taxRate * 100).toFixed(1)}%)</p>
+          <p><strong>Maturity After Tax: </strong> <span class='text-green-600 font-bold'>${formatNumber(maturityAfterTax.toFixed(2))}</span></p>
+          <p><strong>Interest After Tax: </strong> <span class='text-green-600 font-bold'>${formatNumber(interestAfterTax.toFixed(2))}</span></p>
+        `;
                 resultDiv.classList.remove('hidden');
             };
         })();
