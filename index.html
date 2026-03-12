@@ -12,6 +12,10 @@
         .group:hover .group-hover\:opacity-100 {
             opacity: 1;
         }
+
+        .calc-btn:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 
@@ -57,7 +61,7 @@
                 <div class="space-y-4">
                     <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
                         <label for="deposit" class="font-semibold">Monthly Deposit</label>
-                        <input type="text" id="deposit" value="5,000"
+                        <input type="text" inputmode="numeric" pattern="[0-9,]*" id="deposit" value="5,000"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                     </div>
                     <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
@@ -89,9 +93,11 @@
                 <div class="space-y-4">
                     <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
                         <label for="fdrAmount" class="font-semibold"> Principal Amount </label>
-                        <input type="text" id="fdrAmount" value="500,000"
+                        <input type="text" inputmode="numeric" pattern="[0-9,]*" id="fdrAmount" value="500,000"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
                     </div>
+
+
                     <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
                         <label id="durationLabel" for="fdrYears" class="font-semibold"> Duration (Months) </label>
                         <div class="relative w-full">
@@ -146,47 +152,66 @@
                         class="bg-gray-50 border border-gray-300 text-right text-4xl p-4 rounded-xl mb-6 font-semibold text-black tracking-wide overflow-x-auto">
                         0</div>
                     <div class="grid grid-cols-4 gap-3 text-lg font-semibold select-none">
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="C">C</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="DEL">⌫</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="%">%</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="/">÷</button>
 
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="7">7</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="8">8</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="9">9</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="*">×</button>
 
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="4">4</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="5">5</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="6">6</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="-">−</button>
 
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="1">1</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="2">2</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="3">3</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val="+">+</button>
 
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl col-span-2"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl col-span-2 active:scale-95 hover:bg-gray-100 transition"
                             data-val="0">0</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-gray-100 transition"
                             data-val=".">.</button>
-                        <button class="calc-btn bg-blue-600 text-white border border-gray-300 py-4 rounded-xl"
+                        <button
+                            class="calc-btn bg-blue-600 text-white border border-gray-300 py-4 rounded-xl active:scale-95 hover:bg-blue-800 transition"
                             data-val="=">=</button>
                     </div>
                 </div>
@@ -369,11 +394,26 @@
             const unformatNumber = (str) => str.replace(/,/g, '');
 
             function enableCommaFormat(inputEl) {
-                inputEl.addEventListener('input', function (e) {
-                    let raw = unformatNumber(e.target.value);
-                    if (!isNaN(raw) && raw !== '') e.target.value = formatNumber(raw);
+                inputEl.addEventListener("input", function (e) {
+                    let cursor = e.target.selectionStart;
+                    // remove non-numbers
+                    let raw = e.target.value.replace(/[^\d]/g, "");
+                    if (raw === "") {
+                        e.target.value = "";
+                        return;
+                    }
+                    // count commas before formatting
+                    let beforeLength = e.target.value.length;
+                    // format
+                    let formatted = formatNumber(raw);
+                    e.target.value = formatted;
+                    // adjust cursor position
+                    let afterLength = formatted.length;
+                    cursor = cursor + (afterLength - beforeLength);
+                    e.target.setSelectionRange(cursor, cursor);
                 });
             }
+            
             // apply to both calculator inputs
             enableCommaFormat(document.getElementById('fdrAmount'));
             enableCommaFormat(document.getElementById('deposit'));
@@ -382,28 +422,173 @@
             const modal = document.getElementById('calculatorModal');
             document.getElementById('openCalculator').addEventListener('click', () => modal.classList.remove('hidden'));
             document.getElementById('closeCalculator').addEventListener('click', () => modal.classList.add('hidden'));
-
             const display = document.getElementById("calcDisplay");
+
+
+            function formatExpression(exp) {
+                return exp.replace(/\d+(\.\d+)?/g, (num) => {
+                    return formatNumber(num);
+                });
+            }
+
+
+            // Create One Input Function
+            function handleCalcInput(val) {
+                let current = unformatNumber(display.textContent.trim());
+                if (val === "C") {
+                    display.textContent = "0";
+                    return;
+                }
+                if (val === "DEL") {
+                    current = current.slice(0, -1) || "0";
+                    if (current === "0") {
+                        display.textContent = "0";
+                    } else {
+                        display.textContent = formatExpression(current);
+                    }
+                    return;
+                }
+                if (val === "%") {
+                    let match = current.match(/(\d+\.?\d*)$/);
+                    if (match) {
+                        let num = parseFloat(match[1]) / 100;
+                        display.textContent = current.replace(/(\d+\.?\d*)$/, num);
+                    }
+                    return;
+                }
+                if (val === "=") {
+                    try {
+                        let result = eval(current);
+                        display.textContent = formatNumber(result);
+                    } catch {
+                        display.textContent = "Error";
+                    }
+                    return;
+                }
+                const ops = ["+", "-", "*", "/"];
+                if (ops.includes(val)) {
+                    if (ops.includes(current.slice(-1))) return;
+                    display.textContent += val;
+                    return;
+                }
+                if (current === "0") {
+                    current = val;
+                } else {
+                    current += val;
+                }
+                display.textContent = formatExpression(current);
+            }
+
+
+            // Use It For Mouse Clicks
             document.querySelectorAll('.calc-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
-                    const val = btn.dataset.val;
-                    if (val === "C") display.textContent = "0";
-                    else if (val === "DEL") display.textContent = display.textContent.slice(0, -1) || "0";
-                    else if (val === "%") {
-                        let exp = display.textContent;
-                        let match = exp.match(/(\d+\.?\d*)$/);
-                        if (match) {
-                            let num = parseFloat(match[1]) / 100;
-                            display.textContent = exp.replace(/(\d+\.?\d*)$/, num);
-                        }
-                    } else if (val === "=") {
-                        try { display.textContent = eval(display.textContent); }
-                        catch { display.textContent = "Error"; }
-                    } else {
-                        display.textContent = display.textContent === "0" ? val : display.textContent + val;
-                    }
+                    handleCalcInput(btn.dataset.val);
                 });
             });
+
+
+            // Add Keyboard Support
+            document.addEventListener("keydown", (e) => {
+
+                const key = e.key;
+
+                if (!modal.classList.contains("hidden")) {
+
+                    if (!isNaN(key)) handleCalcInput(key);
+
+                    if (["+", "-", "*", "/"].includes(key))
+                        handleCalcInput(key);
+
+                    if (key === "Enter") handleCalcInput("=");
+
+                    if (key === "Backspace") handleCalcInput("DEL");
+
+                    if (key === "Escape") handleCalcInput("C");
+
+                    if (key === ".") handleCalcInput(".");
+                }
+
+            });
+
+
+
+
+
+
+            // document.querySelectorAll('.calc-btn').forEach(btn => {
+            //     btn.addEventListener('click', () => {
+            //         const val = btn.dataset.val;
+            //         let current = display.textContent.trim();
+            //         if (val === "C") {
+            //             display.textContent = "0";
+            //             return;
+            //         }
+            //         if (val === "DEL") {
+            //             display.textContent = current.slice(0, -1) || "0";
+            //             return;
+            //         }
+            //         if (val === "%") {
+            //             let match = current.match(/(\d+\.?\d*)$/);
+            //             if (match) {
+            //                 let num = parseFloat(match[1]) / 100;
+            //                 display.textContent = current.replace(/(\d+\.?\d*)$/, num);
+            //             }
+            //             return;
+            //         }
+            //         if (val === "=") {
+            //             try {
+            //                 display.textContent = eval(current);
+            //             } catch {
+            //                 display.textContent = "Error";
+            //             }
+            //             return;
+            //         }
+            //         // Operators
+            //         const ops = ["+", "-", "*", "/"];
+            //         if (ops.includes(val)) {
+
+            //             if (ops.includes(current.slice(-1))) return;
+
+            //             display.textContent += val;
+            //             return;
+            //         }
+            //         // Numbers / decimal
+            //         if (current === "0") {
+            //             display.textContent = val;
+            //         } else {
+            //             display.textContent += val;
+            //         }
+            //     });
+            // });
+
+
+            // document.addEventListener("keydown", (e) => {
+            //     const key = e.key;
+            //     if ("0123456789.+-*/".includes(key)) {
+            //         display.textContent =
+            //             display.textContent === "0"
+            //                 ? key
+            //                 : display.textContent + key;
+            //     }
+            //     if (key === "Enter") {
+            //         try {
+            //             display.textContent =
+            //                 Function("return " + display.textContent)();
+            //         } catch {
+            //             display.textContent = "Error";
+            //         }
+            //     }
+            //     if (key === "Backspace") {
+            //         display.textContent =
+            //             display.textContent.slice(0, -1) || "0";
+            //     }
+            //     if (key === "Escape") {
+            //         display.textContent = "0";
+            //     }
+            // });
+
+
 
             // ---------- DCAL (unchanged calculation, but using unformat) ----------
             window.calculateDPS = function () {
@@ -486,4 +671,5 @@
         })();
     </script>
 </body>
+
 </html>
