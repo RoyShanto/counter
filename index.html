@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,12 @@
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <style>
         /* tiny addition for smooth tooltip – no visual change */
-        .group:hover .group-hover\:opacity-100 { opacity: 1; }
+        .group:hover .group-hover\:opacity-100 {
+            opacity: 1;
+        }
     </style>
 </head>
+
 <body class="bg-gray-100 min-h-screen md:py-3 md:px-10 max-sm:p-3">
 
     <!-- LOGIN SCREEN (exactly same UI) -->
@@ -38,13 +42,9 @@
         </h1>
         <p id="today-date" class="text-3xl top-0 right-2 text-gray-500 fixed"></p>
         <!-- colour legend (unchanged) -->
-        <div class="text-center flex justify-center space-x-3 text-gray-500">
-            <p>0-10=g-600</p>
-            <p>11-30=g-400</p>
-            <p>31-60=g-200</p>
-            <p>61-80=r-200</p>
-            <p>81-*=r-400</p>
-        </div>
+        <p class="text-center flex justify-center space-x-2 max-sm:pb-1 text-gray-500">
+            <u>0-10</u><u>11-30</u><u>31-60</u><u>61-80</u><u>81-*</u>
+        </p>
 
         <!-- dynamic investment cards container -->
         <div id="ps-container" class="space-y-8"></div>
@@ -80,7 +80,8 @@
                         Calculate
                     </button>
                 </div>
-                <div id="dpsResult" class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200 text-gray-800 hidden"></div>
+                <div id="dpsResult" class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200 text-gray-800 hidden">
+                </div>
             </div>
 
             <!-- FCAL card -->
@@ -112,7 +113,8 @@
                         Calculate
                     </button>
                 </div>
-                <div id="fdrResult" class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200 text-gray-800 hidden"></div>
+                <div id="fdrResult" class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200 text-gray-800 hidden">
+                </div>
             </div>
         </div>
 
@@ -123,35 +125,58 @@
         </button>
 
         <!-- calculator modal (identical structure) -->
-        <div id="calculatorModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div id="calculatorModal"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
             <div class="bg-white p-2 max-sm:top-[22%] rounded-2xl shadow-xl max-sm:w-full relative">
-                <button id="closeCalculator" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 font-bold">✖</button>
+                <button id="closeCalculator"
+                    class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 font-bold">✖</button>
                 <div class="shadow-xl rounded-2xl p-6 w-full md:w-[300px] bg-white">
-                    <div id="calcDisplay" class="bg-gray-50 border border-gray-300 text-right text-4xl p-4 rounded-xl mb-6 font-semibold text-black tracking-wide overflow-x-auto">0</div>
+                    <div id="calcDisplay"
+                        class="bg-gray-50 border border-gray-300 text-right text-4xl p-4 rounded-xl mb-6 font-semibold text-black tracking-wide overflow-x-auto">
+                        0</div>
                     <div class="grid grid-cols-4 gap-3 text-lg font-semibold select-none">
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="C">C</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="DEL">⌫</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="%">%</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="/">÷</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="C">C</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="DEL">⌫</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="%">%</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="/">÷</button>
 
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="7">7</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="8">8</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="9">9</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="*">×</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="7">7</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="8">8</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="9">9</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="*">×</button>
 
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="4">4</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="5">5</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="6">6</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="-">−</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="4">4</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="5">5</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="6">6</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="-">−</button>
 
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="1">1</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="2">2</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="3">3</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val="+">+</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="1">1</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="2">2</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="3">3</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val="+">+</button>
 
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl col-span-2" data-val="0">0</button>
-                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl" data-val=".">.</button>
-                        <button class="calc-btn bg-blue-600 text-white border border-gray-300 py-4 rounded-xl" data-val="=">=</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl col-span-2"
+                            data-val="0">0</button>
+                        <button class="calc-btn bg-white text-black border border-gray-300 py-4 rounded-xl"
+                            data-val=".">.</button>
+                        <button class="calc-btn bg-blue-600 text-white border border-gray-300 py-4 rounded-xl"
+                            data-val="=">=</button>
                     </div>
                 </div>
             </div>
@@ -161,7 +186,7 @@
     <hr class="lg:mx-10 mt-12">
 
     <script>
-        (function() {
+        (function () {
             // ---------- disable right‑click & devtools shortcuts (unchanged) ----------
             document.addEventListener('contextmenu', (e) => e.preventDefault());
             document.addEventListener('keydown', (e) => {
@@ -171,7 +196,7 @@
             });
 
             // ---------- LOGIN ----------
-            window.checkLogin = function() {
+            window.checkLogin = function () {
                 const iUTest = document.getElementById('test').value.trim();
                 const iUSection = document.getElementById('iUSection');
                 const mainContent = document.getElementById('mainContent');
@@ -194,30 +219,30 @@
             // ---------- DATA ----------
             const investments = [
                 { label: '39?45?898*', p: "U", startDate: '2026-02-19', closeDate: '2031-02-19', policy: "sameDate", periods: 60, interval: 1 },
-                { label: '31?15?218', p: "U", startDate: '2026-02-04', closeDate: '2026-05-04', policy: "sameDate", periods: 1, interval: 3 },
+                { label: '30?15?375', p: "U", startDate: '2026-02-04', closeDate: '2026-05-04', policy: "sameDate", periods: 1, interval: 3 },
                 { label: '27?10?646*', p: "O", startDate: '2025-04-28', closeDate: '2028-04-28', policy: "sameDate", periods: 12, interval: 3 },
                 { label: '27?10?562*', p: "O", startDate: '2025-05-04', closeDate: '2028-05-04', policy: "sameDate", periods: 12, interval: 3 },
                 { label: '26?10?482*', p: "O", startDate: '2025-08-21', closeDate: '2028-08-21', policy: "sameDate", periods: 12, interval: 3 },
                 { label: '10?5?406', p: "O", startDate: '2025-01-04', closeDate: '2026-04-04', policy: "sameDate", periods: 5, interval: 3 },
                 { label: '10?5?406', p: "O", startDate: '2025-01-04', closeDate: '2026-04-04', policy: "sameDate", periods: 5, interval: 3 },
                 { label: '10?5?406', p: "O", startDate: '2025-01-04', closeDate: '2026-04-04', policy: "sameDate", periods: 5, interval: 3 },
-                { label: '191125?5?0526', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
-                { label: '191125?5?0526', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
-                { label: '191125?5?0526', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
-                { label: '191125?5?0526', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
+                { label: '3?5?562', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
+                { label: '3?5?562', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
+                { label: '3?5?562', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
+                { label: '3?5?562', p: "O", startDate: '2025-11-19', closeDate: '2026-05-19', policy: "monthEnd", periods: 6, interval: 1 },
                 { label: '13?5?837*', p: "N", startDate: '2025-05-15', closeDate: '2028-05-15', policy: "sameDate", periods: 12, interval: 3 },
                 { label: '13?5?269*', p: "N", startDate: '2025-08-17', closeDate: '2028-08-17', policy: "sameDate", periods: 12, interval: 3 },
                 { label: '52?20?965*', p: "N", startDate: '2025-09-29', closeDate: '2028-09-29', policy: "sameDate", periods: 12, interval: 3 },
-                { label: '270126?5?0127', p: "N", startDate: '2026-01-27', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 },
-                { label: '270126?5?0127', p: "N", startDate: '2026-01-27', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 },
-                { label: '270126?5?0127', p: "N", startDate: '2026-01-27', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 },
-                { label: '5?2.5?203', p: "N", startDate: '2025-12-07', closeDate: '2026-03-07', policy: "sameDate", periods: 3, interval: 3 },
-                { label: '280126?2.5?0127', p: "N", startDate: '2026-01-28', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 }
+                { label: '3?5?562', p: "N", startDate: '2026-01-27', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 },
+                { label: '3?5?562', p: "N", startDate: '2026-01-27', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 },
+                { label: '3?5?562', p: "N", startDate: '2026-01-27', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 },
+                { label: '2?3?137', p: "N", startDate: '2026-03-08', closeDate: '2027-03-08', policy: "monthEnd", periods: 12, interval: 1 },
+                { label: '1?2.5?781', p: "N", startDate: '2026-01-28', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 }
             ];
 
             // ---------- helper: find next date & days left ----------
             function getNextDateAndDiff(startDate, periods, interval, policy) {
-                const today = new Date(); today.setHours(0,0,0,0);
+                const today = new Date(); today.setHours(0, 0, 0, 0);
                 const base = new Date(startDate);
                 for (let i = 0; i < periods; i++) {
                     let next = new Date(base);
@@ -225,23 +250,23 @@
                     if (policy === "monthEnd") {
                         next = new Date(next.getFullYear(), next.getMonth() + 1, 0);
                     }
-                    next.setHours(0,0,0,0);
-                    const diff = Math.ceil((next - today) / (1000*60*60*24));
+                    next.setHours(0, 0, 0, 0);
+                    const diff = Math.ceil((next - today) / (1000 * 60 * 60 * 24));
                     if (diff >= 0) return { nextDate: next, daysLeft: diff };
                 }
                 return { nextDate: null, daysLeft: Infinity };
             }
 
             // ---------- enrich investments with nextDate, daysLeft, restDays ----------
-            const today = new Date(); today.setHours(0,0,0,0);
+            const today = new Date(); today.setHours(0, 0, 0, 0);
             investments.forEach(inv => {
                 const { nextDate, daysLeft } = getNextDateAndDiff(inv.startDate, inv.periods, inv.interval, inv.policy);
                 inv.nextDate = nextDate;
                 inv.daysLeft = daysLeft;
 
                 if (inv.closeDate) {
-                    const close = new Date(inv.closeDate); close.setHours(0,0,0,0);
-                    inv.restDays = Math.ceil((close - today) / (1000*60*60*24));
+                    const close = new Date(inv.closeDate); close.setHours(0, 0, 0, 0);
+                    inv.restDays = Math.ceil((close - today) / (1000 * 60 * 60 * 24));
                 } else {
                     inv.restDays = null;
                 }
@@ -268,7 +293,7 @@
                 row.className = "flex flex-wrap max-sm:justify-between gap-2";
 
                 // sort by urgency
-                grouped[p].sort((a,b) => a.daysLeft - b.daysLeft);
+                grouped[p].sort((a, b) => a.daysLeft - b.daysLeft);
 
                 grouped[p].forEach(inv => {
                     const card = document.createElement('div');
@@ -295,7 +320,7 @@
                     if (inv.restDays !== null) {
                         const tooltip = document.createElement('div');
                         tooltip.className = "absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-black text-white text-xs px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap";
-                        tooltip.textContent = inv.restDays >= 0 ? `${inv.restDays} days` : `Closed ${Math.abs(inv.restDays)} days ago`;
+                        tooltip.textContent = inv.restDays >= 0 ? `${inv.closeDate}__${inv.restDays}` : `Closed ${Math.abs(inv.restDays)} days ago ${inv.closeDate}`;
                         card.appendChild(tooltip);
                     }
 
@@ -313,7 +338,7 @@
                         }
                         const li = document.createElement('li');
                         li.textContent = current.toDateString();
-                        if (inv.nextDate && current.setHours(0,0,0,0) === inv.nextDate.setHours(0,0,0,0)) {
+                        if (inv.nextDate && current.setHours(0, 0, 0, 0) === inv.nextDate.setHours(0, 0, 0, 0)) {
                             li.className = "text-orange-500 font-bold";
                         }
                         ol.appendChild(li);
@@ -333,7 +358,7 @@
             const unformatNumber = (str) => str.replace(/,/g, '');
 
             function enableCommaFormat(inputEl) {
-                inputEl.addEventListener('input', function(e) {
+                inputEl.addEventListener('input', function (e) {
                     let raw = unformatNumber(e.target.value);
                     if (!isNaN(raw) && raw !== '') e.target.value = formatNumber(raw);
                 });
@@ -361,7 +386,7 @@
                             display.textContent = exp.replace(/(\d+\.?\d*)$/, num);
                         }
                     } else if (val === "=") {
-                        try { display.textContent = eval(display.textContent); } 
+                        try { display.textContent = eval(display.textContent); }
                         catch { display.textContent = "Error"; }
                     } else {
                         display.textContent = display.textContent === "0" ? val : display.textContent + val;
@@ -370,7 +395,7 @@
             });
 
             // ---------- DCAL (unchanged calculation, but using unformat) ----------
-            window.calculateDPS = function() {
+            window.calculateDPS = function () {
                 const P = parseFloat(unformatNumber(document.getElementById('deposit').value));
                 const t = parseFloat(document.getElementById('years').value);
                 const r = parseFloat(document.getElementById('rate').value) / 100;
@@ -395,7 +420,7 @@
                     <p><strong>Total Deposit: </strong>${formatNumber(totalDeposit.toFixed(2))}</p>
                     <p><strong>Interest Earned: </strong>${formatNumber(interest.toFixed(2))}</p>
                     <p><strong>Maturity Amount: </strong> <span class='text-blue-600 font-bold'>${formatNumber(M.toFixed(2))}</span></p>
-                    <p><strong>Source Tax: </strong>${formatNumber(taxAmount.toFixed(2))} (${(taxRate*100).toFixed(1)}%)</p>
+                    <p><strong>Source Tax: </strong>${formatNumber(taxAmount.toFixed(2))} (${(taxRate * 100).toFixed(1)}%)</p>
                     <p><strong>Maturity After Tax: </strong> <span class='text-blue-600 font-bold'>${formatNumber(maturityAfterTax.toFixed(2))}</span></p>
                     <p><strong>Interest After Tax: </strong> <span class='text-blue-600 font-bold'>${formatNumber(interestAfterTax.toFixed(2))}</span></p>
                 `;
@@ -403,7 +428,7 @@
             };
 
             // ---------- FCAL (simple interest version, same as original) ----------
-            window.calculateFDR = function() {
+            window.calculateFDR = function () {
                 const A = parseFloat(unformatNumber(document.getElementById('fdrAmount').value));
                 const t = parseFloat(document.getElementById('fdrYears').value);
                 const r = parseFloat(document.getElementById('fdrRate').value) / 100;
@@ -426,7 +451,7 @@
                     <p><strong>Principal: </strong>${formatNumber(A.toFixed(2))}</p>
                     <p><strong>Interest Earned: </strong>${formatNumber(interest.toFixed(2))}</p>
                     <p><strong>Maturity Amount: </strong> <span class='text-green-600 font-bold'>${formatNumber(maturity.toFixed(2))}</span></p>
-                    <p><strong>Source Tax: </strong>${formatNumber(totalTax.toFixed(2))} (${(taxRate*100).toFixed(1)}%)</p>
+                    <p><strong>Source Tax: </strong>${formatNumber(totalTax.toFixed(2))} (${(taxRate * 100).toFixed(1)}%)</p>
                     <p><strong>Maturity After Tax: </strong>${formatNumber(maturityAfterTax.toFixed(2))}</p>
                     <p><strong>Interest After Tax: </strong> <span class='text-green-600 font-bold'>${formatNumber(interestAfterTax.toFixed(2))}</span></p>
                 `;
@@ -435,4 +460,5 @@
         })();
     </script>
 </body>
+
 </html>
