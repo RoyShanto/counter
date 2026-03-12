@@ -50,28 +50,28 @@
         <div id="ps-container" class="space-y-8"></div>
 
         <!-- calculators side by side (identical layout) -->
-        <div class="md:flex justify-center md:space-x-6 py-5 max-sm:space-y-5">
+        <div class="my-4 grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             <!-- DCAL card -->
             <div class="bg-white shadow-lg rounded-2xl p-6">
-                <h2 class="text-2xl font-bold text-center text-blue-600 mb-6">DCAL</h2>
+                <h2 class="text-2xl font-bold text-center text-blue-600 mb-6"> DCAL </h2>
                 <div class="space-y-4">
-                    <div class="flex items-center">
-                        <label for="deposit" class="w-full block font-semibold mb-1">Monthly Deposit (৳)</label>
+                    <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
+                        <label for="deposit" class="font-semibold">Monthly Deposit</label>
                         <input type="text" id="deposit" value="5,000"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                     </div>
-                    <div class="flex items-center">
-                        <label for="years" class="w-full block font-semibold mb-1">Duration (Years)</label>
+                    <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
+                        <label for="years" class="font-semibold">Duration (Years)</label>
                         <input type="number" id="years" value="5"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                     </div>
-                    <div class="flex items-center">
-                        <label for="rate" class="w-full block font-semibold mb-1">Annual Interest Rate (%)</label>
+                    <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
+                        <label for="rate" class="font-semibold">Annual Interest Rate (%)</label>
                         <input type="number" id="rate" value="9.25"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                     </div>
-                    <div class="flex items-center">
-                        <label for="dpsTax" class="w-full block font-semibold mb-1">Source Tax on Interest (%)</label>
+                    <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
+                        <label for="dpsTax" class="font-semibold">Source Tax on Interest (%)</label>
                         <input type="number" id="dpsTax" value="10"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
                     </div>
@@ -80,40 +80,51 @@
                         Calculate
                     </button>
                 </div>
-                <div id="dpsResult" class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200 text-gray-800 hidden">
+                <div id="dpsResult" class="mt-6 bg-blue-50 border border-blue-200 p-4 rounded-lg text-gray-800 hidden">
                 </div>
             </div>
-
             <!-- FCAL card -->
             <div class="bg-white shadow-lg rounded-2xl p-6">
-                <h2 class="text-2xl font-bold text-center text-green-600 mb-6">FCAL</h2>
+                <h2 class="text-2xl font-bold text-center text-green-600 mb-6"> FCAL </h2>
                 <div class="space-y-4">
-                    <div class="flex items-center">
-                        <label for="fdrAmount" class="w-full block font-semibold mb-1">Principal Amount (৳)</label>
+                    <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
+                        <label for="fdrAmount" class="font-semibold"> Principal Amount </label>
                         <input type="text" id="fdrAmount" value="500,000"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
                     </div>
-                    <div class="flex items-center">
-                        <label for="fdrYears" class="w-full block font-semibold mb-1">Duration (Months)</label>
-                        <input type="number" id="fdrYears" value="1"
-                            class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
+                    <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
+                        <label id="durationLabel" for="fdrYears" class="font-semibold"> Duration (Months) </label>
+                        <div class="relative w-full">
+                            <input type="number" id="fdrYears" value="1" placeholder="Per month = 30 days"
+                                class="w-full p-2 pr-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
+                            <label class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer flex items-center">
+                                <input type="checkbox" id="durationDays" class="sr-only peer">
+                                <div class="w-9 h-5 bg-gray-300 rounded-full peer
+                                    peer-checked:bg-green-600
+                                    after:content-[''] after:absolute after:top-[2px] after:left-[2px]
+                                    after:bg-white after:rounded-full
+                                    after:h-4 after:w-4 after:transition-all
+                                    peer-checked:after:translate-x-4">
+                                </div>
+                            </label>
+                        </div>
                     </div>
-                    <div class="flex items-center">
-                        <label for="fdrRate" class="w-full block font-semibold mb-1">Annual Interest Rate (%)</label>
+                    <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
+                        <label for="fdrRate" class="font-semibold"> Annual Interest Rate (%) </label>
                         <input type="number" id="fdrRate" value="9.5"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
                     </div>
-                    <div class="flex items-center">
-                        <label for="fdrTax" class="w-full block font-semibold mb-1">Source Tax on Interest (%)</label>
+                    <div class="grid grid-cols-[1fr_1fr] items-center gap-4">
+                        <label for="fdrTax" class="font-semibold"> Source Tax on Interest (%) </label>
                         <input type="number" id="fdrTax" value="10"
                             class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500">
                     </div>
                     <button onclick="calculateFDR()"
                         class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg font-bold transition">
-                        Calculate
-                    </button>
+                        Calculate </button>
                 </div>
-                <div id="fdrResult" class="mt-6 bg-gray-50 p-4 rounded-lg border border-gray-200 text-gray-800 hidden">
+                <div id="fdrResult"
+                    class="mt-6 bg-green-50 border border-green-200 p-4 rounded-lg text-gray-800 hidden">
                 </div>
             </div>
         </div>
@@ -427,12 +438,24 @@
                 resultDiv.classList.remove('hidden');
             };
 
+
+            document.getElementById("durationDays").addEventListener("change", toggleDurationLabel);
+            function toggleDurationLabel() {
+                const checkbox = document.getElementById('durationDays');
+                const label = document.getElementById('durationLabel');
+                if (checkbox.checked) {
+                    label.textContent = "Duration (Days)";
+                } else {
+                    label.textContent = "Duration (Months)";
+                }
+            }
             // ---------- FCAL (simple interest version, same as original) ----------
             window.calculateFDR = function () {
                 const A = parseFloat(unformatNumber(document.getElementById('fdrAmount').value));
-                const t = parseFloat(document.getElementById('fdrYears').value);
+                let t = parseFloat(document.getElementById('fdrYears').value);
                 const r = parseFloat(document.getElementById('fdrRate').value) / 100;
                 const taxRate = parseFloat(document.getElementById('fdrTax').value) / 100 || 0;
+                const isDays = document.getElementById('durationDays').checked;
                 const resultDiv = document.getElementById('fdrResult');
 
                 if (isNaN(A) || isNaN(t) || isNaN(r) || A <= 0 || t <= 0 || r <= 0) {
@@ -440,7 +463,10 @@
                     resultDiv.classList.remove('hidden');
                     return;
                 }
-
+                // convert days → months if checkbox checked
+                if (isDays) {
+                    t = t / 30;
+                }
                 const interest = ((A * r) / 12) * t;
                 const maturity = A + interest;
                 const totalTax = interest * taxRate;
@@ -452,7 +478,7 @@
                     <p><strong>Interest Earned: </strong>${formatNumber(interest.toFixed(2))}</p>
                     <p><strong>Maturity Amount: </strong> <span class='text-green-600 font-bold'>${formatNumber(maturity.toFixed(2))}</span></p>
                     <p><strong>Source Tax: </strong>${formatNumber(totalTax.toFixed(2))} (${(taxRate * 100).toFixed(1)}%)</p>
-                    <p><strong>Maturity After Tax: </strong>${formatNumber(maturityAfterTax.toFixed(2))}</p>
+                    <p><strong>Maturity After Tax: </strong> <span class='text-green-600 font-bold'>${formatNumber(maturityAfterTax.toFixed(2))}</span></p>
                     <p><strong>Interest After Tax: </strong> <span class='text-green-600 font-bold'>${formatNumber(interestAfterTax.toFixed(2))}</span></p>
                 `;
                 resultDiv.classList.remove('hidden');
@@ -460,5 +486,4 @@
         })();
     </script>
 </body>
-
 </html>
