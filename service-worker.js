@@ -1,4 +1,6 @@
-const CACHE_NAME = "demo-counter-v5";
+import { version } from "./demoData";
+
+const CACHE_NAME = version;
 
 const urlsToCache = [
   "/counter/",
