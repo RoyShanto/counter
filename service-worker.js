@@ -1,4 +1,4 @@
-const CACHE_NAME = "demo-counter-v2";
+const CACHE_NAME = "demo-counter-v3";
 
 const urlsToCache = [
   "/counter/",
