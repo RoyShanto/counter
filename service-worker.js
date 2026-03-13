@@ -1,12 +1,13 @@
 const CACHE_NAME = "demo-counter-v2";
 
 const urlsToCache = [
-  "/",
-  "/index.html",
-  "/output.css",
-  "/demoData.js",
-  "/manifest.json",
-  "/favicon.png"
+  "/counter/",
+  "/counter/index.html",
+  "/counter/output.css",
+  "/counter/demoData.js",
+  "/counter/manifest.json",
+  "/counter/favicon.png",
+  "/counter/service-worker.js"
 ];
 
 self.addEventListener("install", event => {
