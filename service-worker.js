@@ -1,6 +1,6 @@
-import { version } from "./demoData.js"
+import { CACHE_NAME } from "./demoData.js"
 
-const CACHE_NAME = version;
+// const CACHE_NAME = version;
 
 const urlsToCache = [
   "/counter/",

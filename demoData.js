@@ -22,4 +22,4 @@ export const demoData = [
 ];
 
 
-export const version = "demo-counter-v7";
+export const CACHE_NAME = "demo-counter-v8";
