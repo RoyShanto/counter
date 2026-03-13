@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "demo-counter-";
-const VERSION = "v12";
+const VERSION = "v13";
 
 const CACHE_NAME = CACHE_PREFIX + VERSION;
 
