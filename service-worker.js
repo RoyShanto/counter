@@ -1,4 +1,4 @@
-import { version } from "./demoData";
+import { version } from "./demoData.js"
 
 const CACHE_NAME = version;
 

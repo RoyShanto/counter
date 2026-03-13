@@ -22,4 +22,4 @@ export const demoData = [
 ];
 
 
-export const version = "demo-counter-v6";
+export const version = "demo-counter-v7";
