@@ -1,0 +1,54 @@
+
+
+# Demo Counter – PWA Setup
+
+This project already works **offline using `output.css`**  
+(using Tailwind CLI: build `output.css` and use it in the project).  
+
+---
+
+You can easily convert it into an **installable Progressive Web App (PWA)** in just **3 steps**.
+
+## 1. Create `manifest.json` with code
+
+## 2. Add Manifest to HTML
+
+Add the manifest file inside the **`<head>`** section of `index.html`.
+
+<link rel="manifest" href="manifest.json">
+
+
+## 3. Add a Service Worker (Offline Cache)
+
+Create a file called **`service-worker.js`** with code. 
+
+Whenever you update your site later, change the cache version:
+const CACHE_NAME = "demo-counter-v1";
+Otherwise the browser may keep using old cached files.
+
+
+## Register the Service Worker
+
+Add this script **before the closing `</body>` tag** in `index.html`.
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js");
+}
+</script>
+
+## Done 🎉
+
+Open the website once in **Google Chrome** or **Microsoft Edge**.
+You will see an option such as: "Install App" OR "+ Install"
+After installing, the website behaves like a **native application**.
+
+
+## Features
+
+Your **Demo Counter App** will now support:
+
+* ✅ **Offline usage**
+* ✅ **Installable as an app**
+* ✅ **Standalone app mode**
+* ✅ **Faster loading using cached files**

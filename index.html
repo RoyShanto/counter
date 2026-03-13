@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo Counter – clean</title>
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="output.css">
+    <link rel="manifest" href="manifest.json">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <style>
         /* tiny addition for smooth tooltip – no visual change */
         .group:hover .group-hover\:opacity-100 {
             opacity: 1;
         }
+
         .calc-btn:active {
             transform: scale(0.95);
         }
@@ -44,7 +46,7 @@
             class="md:text-5xl max-sm:text-4xl font-extrabold text-center text-white mb-2 p-3 rounded-lg shadow bg-gradient-to-r from-red-300 to-orange-200">
             Demo Counter
         </h1>
-        <p id="today-date" class="text-3xl top-0 right-2 text-gray-500 fixed"></p>
+        <p id="today-date" class="text-3xl top-0 right-2 text-gray-500 fixed z-50 bg-white/80 px-2 rounded"></p>
         <!-- colour legend -->
         <p class="text-center flex justify-center space-x-2 max-sm:pb-1 text-gray-500">
             <u class="text-green-600 font-bold">0-10</u>
@@ -531,6 +533,13 @@
                 resultDiv.classList.remove('hidden');
             };
         })();
+
+
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("service-worker.js");
+        }
+
+
     </script>
 </body>
 
