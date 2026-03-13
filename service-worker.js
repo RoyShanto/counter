@@ -1,4 +1,7 @@
-const CACHE_NAME = "demo-counter-v10";
+const CACHE_PREFIX = "demo-counter-";
+const VERSION = "v11";
+
+const CACHE_NAME = CACHE_PREFIX + VERSION;
 
 const urlsToCache = [
   "/counter/",
@@ -12,37 +15,48 @@ const urlsToCache = [
 
 // INSTALL
 self.addEventListener("install", (event) => {
+
   self.skipWaiting();
 
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(urlsToCache))
+      .then((cache) => {
+        return cache.addAll(urlsToCache);
+      })
   );
+
 });
 
 
 // ACTIVATE
 self.addEventListener("activate", (event) => {
+
   event.waitUntil(
     caches.keys().then((keys) => {
+
       return Promise.all(
         keys.map((key) => {
-          if (key !== CACHE_NAME) {
+
+          // delete only this project's old caches
+          if (key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME) {
             return caches.delete(key);
           }
+
         })
       );
+
     })
   );
 
   self.clients.claim();
+
 });
 
 
 // FETCH
 self.addEventListener("fetch", (event) => {
 
-  // HTML pages → NETWORK FIRST
+  // NETWORK FIRST for HTML
   if (event.request.mode === "navigate") {
 
     event.respondWith(
@@ -67,7 +81,7 @@ self.addEventListener("fetch", (event) => {
   }
 
 
-  // STATIC FILES → CACHE FIRST
+  // CACHE FIRST for assets
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
