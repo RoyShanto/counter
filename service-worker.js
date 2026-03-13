@@ -1,6 +1,4 @@
-// import { CACHE_NAME } from "./demoData.js"
-
-const CACHE_NAME = "demo-counter-v9";
+const CACHE_NAME = "demo-counter-v10";
 
 const urlsToCache = [
   "/counter/",

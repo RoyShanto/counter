@@ -20,6 +20,3 @@ export const demoData = [
     { label: '2?3?137', p: "N", startDate: '2026-03-08', closeDate: '2027-03-08', policy: "monthEnd", periods: 12, interval: 1 },
     { label: '1?2.5?781', p: "N", startDate: '2026-01-28', closeDate: '2027-01-27', policy: "monthEnd", periods: 12, interval: 1 }
 ];
-
-
-// export const CACHE_NAME = "demo-counter-v8";
